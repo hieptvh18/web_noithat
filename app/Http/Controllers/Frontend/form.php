@@ -40,9 +40,9 @@ class form extends Controller
             $file = $request->avatar;
             $fileName =  $file->getClientoriginalName();
             $file->move(public_path('/upload'), $fileName);
+            $user->avatar = $fileName;
         }
         $user->password = $passEncryption;
-        $user->avatar = $fileName;
         $user->role = 2;
         $user->fill($request->all());
         $user->save();

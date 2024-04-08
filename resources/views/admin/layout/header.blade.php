@@ -1,6 +1,6 @@
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
     <div class="app-brand demo">
-        <a href="index.html" class="app-brand-link">
+        <a href="/" class="app-brand-link">
             <span class="app-brand-logo demo">
                 <svg width="25" viewBox="0 0 25 42" version="1.1" xmlns="http://www.w3.org/2000/svg"
                     xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -45,7 +45,8 @@
                     </g>
                 </svg>
             </span>
-            <span class=" menu-text fw-bolder fs-4 ms-6">Urban Home
+            <span class=" menu-text fw-bolder fs-4 ms-6">
+                <img src="https://www.adina.vn/assets/images/logo.png" width="100p" alt="">
             </span>
         </a>
 
@@ -68,17 +69,17 @@
         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class='bx bxs-category'></i>&nbsp;&nbsp;&nbsp;&nbsp;
-                <div data-i18n="Layouts">Category</div>
+                <div data-i18n="Layouts">Danh mục</div>
             </a>
             <ul class="menu-sub">
-                <li class="menu-item">
+                {{-- <li class="menu-item">
                     <a href="{{route('room.index')}}" class="menu-link">
                         <div data-i18n="Fluid">Room</div>
                     </a>
-                </li>
+                </li> --}}
                 <li class="menu-item">
                     <a href="{{route('cate.index')}}" class="menu-link">
-                        <div data-i18n="Blank">Product</div>
+                        <div data-i18n="Blank">Quản lý danh mục</div>
                     </a>
                 </li>
             </ul>
@@ -87,36 +88,36 @@
         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class='bx bxs-category'></i>&nbsp;&nbsp;&nbsp;&nbsp;
-                <div data-i18n="Layouts">Product</div>
+                <div data-i18n="Layouts">Sản phẩm</div>
             </a>
             <ul class="menu-sub">
                 <li class="menu-item">
                     <a href="{{route('product.index')}}" class="menu-link">
-                        <div data-i18n="Fluid">Product</div>
+                        <div data-i18n="Fluid">Quản lý sản phẩm</div>
                     </a>
                 </li>
                 <li class="menu-item">
                     <a href="{{route('product.propertie')}}" class="menu-link">
-                        <div data-i18n="Blank">Propertie</div>
+                        <div data-i18n="Blank">Thuộc tính</div>
                     </a>
                 </li>
             </ul>
         </li>
 
-        @if (auth()->user()->role == 1)
+        {{-- @if (auth()->user()->role == 1)
         <li class="menu-item">
             <a href="{{route('staff.index')}}" class="menu-link">
                 <i class='bx bxs-user-detail'></i>
                 <div data-i18n="Layouts">&nbsp;&nbsp;&nbsp;Staff</div>
             </a>
         </li>
-        @endif
+        @endif --}}
 
         @if (auth()->user()->role == 1)
         <li class="menu-item">
             <a href="{{route('staff.index')}}" class="menu-link">
                <i class='bx bxs-user'></i>
-                <div data-i18n="Layouts">&nbsp;&nbsp;&nbsp;User</div>
+                <div data-i18n="Layouts">&nbsp;&nbsp;&nbsp;Khách hàng</div>
             </a>
         </li>
         @endif
@@ -134,7 +135,7 @@
         <li class="menu-item">
             <a href="{{route('order.index')}}" class="menu-link">
                 <i class='bx bxs-food-menu'></i>
-                <div data-i18n="Layouts">&nbsp;&nbsp;&nbsp;&nbsp;Order</div>
+                <div data-i18n="Layouts">&nbsp;&nbsp;&nbsp;&nbsp;Đơn đặt</div>
             </a>
         </li>
         @endif

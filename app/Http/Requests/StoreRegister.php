@@ -24,7 +24,7 @@ class StoreRegister extends FormRequest
     public function rules()
     {
         return [
-            'email' =>  'required|email|string|unique',
+            'email' =>  'required|email|string|unique:users',
             'name' =>  'required|min:7',
             'address' => 'required',
             'password' => 'required|min:6',

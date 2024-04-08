@@ -14,7 +14,7 @@ body {
 
 :root {
     --color-primary: #0975f5;
-    --color-sub: #1fb5d4;
+    --color-sub: #F37223;
     --color-black: #000;
     --color-white: #ffff;
     --color-container: #F8F8F8;
@@ -238,6 +238,10 @@ body {
     font-size: 0.9rem;
     font-weight: 600;
     margin-right: 20px;
+}
+
+.header-menu-item a:hover{
+    color: var(--color-sub);
 }
 
 .header-menu-item-link {

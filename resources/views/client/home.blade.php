@@ -6,30 +6,31 @@
 @section('content')
 
 <div class="banner">
-    <img class="w-100" src="https://theme.hstatic.net/1000409762/1000752712/14/slideshow_2.jpg?v=10" alt="">
+    {{-- <img class="w-100" style="height: 737px" src="" alt=""> --}}
+    <img class="w-100" src="https://angito.com.vn/uploads/Banner/Banner%20trang%20ch%E1%BB%A7-16.jpg" alt="">
     <div class="banner-sub_box  padding-container">
         <div class="banner-sub_img-box">
             <img class="w-100 h-100"
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHs7OsnVT6x9iButRu0vQSYpPduxbYvL-SgQ&usqp=CAU"
+                src="https://www.adina.vn/assets/projects/autocare/showcase-vn-auto-4-570x367.jpg"
                 alt="">
         </div>
         <div class="banner-sub_img-box">
             <img class="w-100 h-100 "
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTz2C42dNn5C8YQ017fuWtsrP8Vofp3yUnFw&usqp=CAU"
+            src="https://www.adina.vn/assets/projects/t-flower/showcase-tflowers7-570x367.jpg"
                 alt="">
         </div>
         <div class="banner-sub_img-box">
             <img class="w-100 h-100 "
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRa02xpSPRyVb93rXm0jd9yQrZwH7LF_0jVOw&usqp=CAU"
+                src="https://www.adina.vn/assets/projects/bmsc/thiet-ke-nhan-dien-thuong-hieu-bmsc-14-570x367.jpg"
                 alt="">
         </div>
     </div>
 </div>
 <div class="content">
     <h3 class="header-footer-title commom-title text-center">
-        Sản phẩm mới nhất
+        Dịch vụ nổi bật
     </h3>
-    <p class="text-center color-text">Cập nhật những sản phẩm mới nhật</p>
+    <p class="text-center color-text">Cập nhật những dịch vụ nổi bật</p>
     <div class="product-list_box padding-container">
         @foreach ($products as $item)
         <!-- {{$item->id}} -->
@@ -59,9 +60,9 @@
 
     </div>
     <h3 class="header-footer-title commom-title text-center" style="margin-top:50px">
-        Sản phẩm nổi bật
+        Dịch vụ trending
     </h3>
-    <p class="text-center color-text">Cập nhật những sản phẩm mới nhật</p>
+    <p class="text-center color-text">Cập nhật những dịch vụ trending</p>
     <div class="product-list_box padding-container">
         @foreach ($productMoreView as $item)
         <div class="product-item">

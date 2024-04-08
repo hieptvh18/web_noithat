@@ -5,7 +5,7 @@
                 </h3>
                 <p class="text-center color-text">Luôn sẵn sáng hỗ trợ và tư vấn cho bạn để có sản phẩm tốt nhất.</p>
                 <div class="header-footer-form-box text-center">
-                    <input placeholder="Tìm kiếm sản phẩm" class="header-footer-form-input" type="text">
+                    <input placeholder="Tìm kiếm dịch vụ" class="header-footer-form-input" type="text">
                     <button class="header-footer-form-btn">Gửi</button>
                 </div>
             </header>
@@ -13,25 +13,25 @@
                 <div class="footer-intro-item">
                     <img src="https://theme.hstatic.net/1000409762/1000752712/14/policy_icon_1.png?v=10" alt="">
                     <div class="footer-intro-item-info">
-                        <p>Giao hàng nhanh chóng.</p>
+                        <p>Sáng tạo chuyên nghiệp.</p>
 
-                        <span>Miễn phí với đơn hàng trên 3 triệu.</span>
+                        <span>Vận hành hiệu quả.</span>
                     </div>
                 </div>
                 <div class="footer-intro-item">
                     <img src="https://theme.hstatic.net/1000409762/1000752712/14/policy_icon_1.png?v=10" alt="">
                     <div class="footer-intro-item-info">
-                        <p>Giao hàng nhanh chóng.</p>
+                        <p>Sáng tạo chuyên nghiệp.</p>
 
-                        <span>Miễn phí với đơn hàng trên 3 triệu.</span>
+                        <span>Vận hành hiệu quả.</span>
                     </div>
                 </div>
                 <div class="footer-intro-item">
                     <img src="https://theme.hstatic.net/1000409762/1000752712/14/policy_icon_1.png?v=10" alt="">
                     <div class="footer-intro-item-info">
-                        <p>Giao hàng nhanh chóng.</p>
+                        <p>Sáng tạo chuyên nghiệp.</p>
 
-                        <span>Miễn phí với đơn hàng trên 3 triệu.</span>
+                        <span>Vận hành hiệu quả.</span>
                     </div>
                 </div>
             </div>
@@ -75,6 +75,6 @@
                 </div>
             </div>
             <div class="footer-end">
-                <p class="color-text text-center">Copyright © 2022 Urban Home. Powered by Haravan</p>
+                <p class="color-text text-center">Copyright © {{date('Y')}} ADINA. Powered by Tra</p>
             </div>
         </footer>

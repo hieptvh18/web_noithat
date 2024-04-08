@@ -11,7 +11,7 @@
                 src="https://thumbs.dreamstime.com/b/male-avatar-icon-flat-style-male-user-icon-cartoon-man-avatar-hipster-vector-stock-91462914.jpg"
                 alt="">
             <div class="header-info-asile">
-                <h4 class="header-info-name">Nguyen Ngoc Uy</h4>
+                <h4 class="header-info-name">{{auth()->user()->name}}</h4>
                 <a href="" class="header-info-asile-edit"> <i class="fa-solid fa-pen"></i> Sửa thông tin</a>
             </div>
         </div>

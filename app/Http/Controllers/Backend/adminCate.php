@@ -21,7 +21,7 @@ class adminCate extends Controller
     public function index(){
         $keyword = isset($_GET['q']) ? $_GET['q'] : "";
         // dd($keyword);
-        $query =Category::orderby('categories.id' , 'desc');
+        $query =Category::orderby('categories.id' , 'asc');
         $room_id = isset($_GET['room_id']) ? $_GET['room_id'] : "";
         if(!empty($keyword)) $query = Category::where('categories.name' , 'LIKE' , "%$keyword%");
         if(!empty($room_id)) $query = Category::where('categories.room_id' , '=' , $room_id);
@@ -30,7 +30,9 @@ class adminCate extends Controller
             $query = Category::where('categories.name' , 'LIKE' , "%$keyword%")->where('categories.room_id' , '=' , $room_id);
         }
        
-        $cates = $query->paginate(request('limit') ?? 5);
+        $cates = $query
+                ->orderBy('id','asc')
+                ->paginate(request('limit') ?? 5);
         // dd($this->cates);
         return view('admin.adminCate.adminCate' , ['cates' => $cates , 'rooms' => $this->rooms]);
     }

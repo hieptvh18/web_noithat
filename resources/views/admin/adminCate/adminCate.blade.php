@@ -24,27 +24,29 @@
                             alt="">
                     </div>
                 </div>
-                <div class="mb-3">
+
+                <input type="hidden" name="room_id" value="1">
+                {{-- <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">Room</label>
                     <select name="room_id" class="form-select" aria-label="Default select example">
                         @foreach ($rooms as $item)
                         <option value="{{$item->id}}">{{$item->name }}</option>
                         @endforeach
                     </select>
-                </div>
+                </div> --}}
                 <button type="submit" class="btn btn-primary">Add cate</button>
             </form>
         </div>
         <div class="col-9">
             <div class="row">
-                <div class="col-6">
+                <div class="col-12">
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Filter by name</label>
                         <input type="text" id="search-name" class="form-control q" placeholder="*Enter to search ...">
                     </div>
                     <p id="log"></p>
                 </div>
-                <div class="col-6">
+                {{-- <div class="col-6">
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Filter by room</label>
                         <select class="form-select" id="filter-room" aria-label="Default select example">
@@ -53,7 +55,7 @@
                             @endforeach
                         </select>
                     </div>
-                </div>
+                </div> --}}
             </div>
             <div class="">
                 <p style="color:green" id="message">

@@ -139,6 +139,6 @@ class Cart extends Controller
             }
             session()->forget('cart');
         }
-        return redirect()->route('home')->with('success' , 'Thánh toán thành công');
+        return redirect()->route('home')->with('success' , 'Đặt hàng thành công');
     }
 }

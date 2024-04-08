@@ -1,13 +1,19 @@
+@php
+ $categoryMenus = \App\Models\Category::limit(5)->get();
+@endphp
 <header class="header">
     <div class="header-top">
-        <p>Trang mua hàng nội thất trực tuyến chính hãng!</p>
+        <p>Giải pháp thương hiệu tối ưu! Phù hợp nhiều loại hình doanh nghiệp</p>
     </div>
     <div class="header-main padding-container">
         <div class="header-main_log">
-            <span>Urban Home</span>
+            {{-- <span>Urban Home</span> --}}
+            <a href="/">
+                <img src="https://www.adina.vn/assets/images/logo.png" alt="">
+            </a>
         </div>
         <form action="" class="header-search_form-box">
-            <input class="header-search_form-input" type="text" placeholder="Tìm kiếm sản phẩm">
+            <input class="header-search_form-input" type="text" placeholder="Tìm kiếm dịch vụ">
             <button class="header-search_btn-primary"><i class="fa-solid fa-magnifying-glass"></i></button>
             <div class="product-result-search">
             </div>
@@ -42,8 +48,11 @@
                 </div>
             </div>
             <div id="myDropdown" class="dropdown-content">
+                @if(auth()->user()->role == 0 || auth()->user()->role == 1)
+                <a href="/quan-tri">Trang quản trị</a>
+                @endif
                 <a href="{{route('profile.index')}}">Thông tin</a>
-                <a href="#">Hoá đơn</a>
+                {{-- <a href="#">Hoá đơn</a> --}}
                 <a href="{{route('logOut')}}">Đăng xuất</a>
             </div>
         </div>
@@ -60,7 +69,7 @@
 
             </div>
             <div class="">
-                <p>Giỏ hàng
+                <p>Đặt trước
                 </p>
             </div>
         </div>
@@ -95,11 +104,15 @@
     <div class="header-menu padding-container">
         <ul class="header-menu_list">
             <li class="header-menu-item"><a href="{{route('home')}}" class="header-menu-item-link">Trang chủ </a></li>
-            <li class="header-menu-item"><a href="" class="header-menu-item-link">Giới thiệu</a></li>
-            <li class="header-menu-item"><a href="{{route('client.product.product')}}" class="header-menu-item-link">Sản
-                    phẩm <i class="fa-solid fa-caret-down"></i></a></li>
-            <li class="header-menu-item"><a href="" class="header-menu-item-link">Product View <i
-                        class="fa-solid fa-caret-down"></i></a></li>
+            {{-- <li class="header-menu-item"><a href="" class="header-menu-item-link">Giới thiệu</a></li> --}}
+            {{-- <li class="header-menu-item"><a href="{{route('client.product.product')}}" class="header-menu-item-link">Sản
+                    phẩm <i class="fa-solid fa-caret-down"></i></a></li> --}}
+            {{-- <li class="header-menu-item"><a href="" class="header-menu-item-link">Tin tức <i
+                        class="fa-solid fa-caret-down"></i></a></li> --}}
+                @foreach($categoryMenus as $menu)
+                    <li class="header-menu-item"><a href="/dich-vu/{{$menu->id}}" href="" class="header-menu-item-link">{{$menu->name}}</a></li>
+                @endforeach
+                        
             <li class="header-menu-item"><a href="{{route('contact')}}" href="" class="header-menu-item-link">Liên
                     hệ</a></li>
         </ul>
