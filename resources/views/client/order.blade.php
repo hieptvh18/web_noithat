@@ -6,7 +6,7 @@
 @section('content')
 <div class="content padding-container text-center">
     <h3 class="title-page-name commom-title text-center">Thanh toán</h3>
-    <p class="text-center color-text"> Giỏ hàng của bạn , hãy chọn những thứ mình muốn </p>
+    <p class="text-center color-text">Sau khi hoàn thành đơn hàng. Chúng tôi sẽ sớm liên hệ với bạn để tư vấn rõ hơn. Bạn có thể theo dõi đơn đặt hàng ở trang cá nhân </p>
     <form class="cart-box" action="{{route('order.store')}}" method="POST">
         @csrf
         <div class="">
@@ -37,7 +37,7 @@
         <div class="total-money">
             <div class="order-box">
                 <h4 class="title-form-order">Đơn hàng</h4>
-                <h3 class="plus-cart">Sản phẩm</h3>
+                <h3 class="plus-cart">Dịch vụ</h3>
                 <?php $sum=0?>
                 @if ($cart)
 
@@ -57,7 +57,7 @@
                 <p class="order-note">Sau khi quý khách đặt hàng. Chúng tôi sẽ gửi thông tin đơn hàng qua Email và gọi
                     điện xác nhận đơn hàng. Sau đó sẽ tiến hành vận chuyển hàng. Quý khách thanh toán khi nhận được hàng
                 </p>
-                <button href="" class="btn-check-out">Tiền hành thanh toán</button>
+                <button href="" class="btn-check-out">Đặt ngay</button>
             </div>
         </div>
     </form>

@@ -10,8 +10,10 @@ class adminStaff extends Controller
 {
     public function index(){
         $staff = User::select( 'id', 'name' , 'email' , 'password' ,'address' , 'phone' , 'status' , 'avatar' )
-        ->where('users.role' , 1)->orWhere('users.role' , 0)->
-        orderBy('users.id', 'desc')->paginate(request('limit') ?? 7);
+                ->where('role' , 2)
+                ->orderBy('id', 'desc')
+                ->paginate(request('limit') ?? 7);
+
         return view('admin.adminStaff.adminStaff' , ['staff' => $staff]);
     }
 

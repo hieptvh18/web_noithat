@@ -6,7 +6,7 @@
 .banner-sub_box {
    width: 100%;
    position: absolute;
-   top: 73%;
+   top: 80%;
    display: flex;
    justify-content: center;
    z-index: 0;
@@ -33,7 +33,7 @@
 
 .content {
    background-color: var(--color-container);
-   padding-top: 150px;
+   padding-top: 235px;
 }
 
 .product-list_box {
@@ -131,13 +131,31 @@
 
 /* -------- */
 .category_image-above-box {
-   display: grid;
+   /* display: grid;
    grid-template-columns: repeat(2, 1fr);
-   grid-gap: 30px;
+   grid-gap: 30px; */
+   display: flex;
+   justify-content: space-between;
+   gap: 30px;
 }
 
 .category_image-item-box {
    position: relative;
+   /* height: 100%; */
+}
+
+.category_image-above-right .category_image-item-box {
+   height: 100%;
+}
+
+.category_image-above-left,.category_image-above-right{
+   flex: 1;
+}
+
+.category_image-item-box img{
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
 }
 
 .category_image-box {

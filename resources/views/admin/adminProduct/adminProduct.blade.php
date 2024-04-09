@@ -1,13 +1,13 @@
 @extends('admin.layout.main')
-@section('title' , 'Admin Product')
+@section('title' , 'Quản lý dịch vụ chi tiết')
 @section('content')
 <div class="container">
     <div class="d-flex  justify-content-between align-item-center">
-        <h3 class="my-3">Admin Product</h3>
-        <button class="btn btn-info back text-white mt-2">Refest</button>
+        <h3 class="my-3">Quản lý dịch vụ chi tiết</h3>
+        <button class="btn btn-info back text-white mt-2">Refresh</button>
     </div>
     <h3 id="result"></h3>
-    <a href="{{route('product.create')}}" class="btn btn-primary">Add product</a>
+    <a href="{{route('product.create')}}" class="btn btn-primary">Thêm mới</a>
     <table class="table">
         <thead>
             <tr class="text-nowrap">

@@ -40,7 +40,7 @@
                         <?=number_format($product->price, 0 , '.')?>₫
                     </div>
                 </div>
-                <div class="product-atribute_box">
+                {{-- <div class="product-atribute_box">
                     <p>{{$size->name}} : </p>
                     <ul class="product-atribute_list-size">
                         @foreach ($size->optionDetail as $item)
@@ -58,8 +58,8 @@
                     @endforeach
                       
                     </ul>
-                </div>
-                <p class="alert-product-number">Còn {{$product->quantity}} sản phẩm</p>
+                </div> --}}
+                {{-- <p class="alert-product-number">Còn {{$product->quantity}} sản phẩm</p> --}}
                 <div class="">
                     <div class="number-input">
                         <a onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
@@ -68,7 +68,7 @@
                         <a onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"><i
                                 class="fa-solid fa-plus"></i></a>
                     </div>
-                    <button class="btn-add-to-cart">Thêm giỏ hàng</button>
+                    <button class="btn-add-to-cart">Đặt dịch vụ</button>
                 </div>
             </form>
             <div class="tabs1">
@@ -76,8 +76,6 @@
                 </div>
                 <div class="tab-item tablinks" onclick="openCity(event, 'Paris')">
                     ĐIỀU KHOẢN DỊCH VỤ</div>
-                <div class="tab-item tablinks" onclick="openCity(event, 'Tokyo')">
-                    CHÍNH SÁCH ĐỔI TRẢ</div>
             </div>
             <div id="London" class="tabcontent">
                 <?=$product->description?>
@@ -86,15 +84,10 @@
             <div id="Paris" class="tabcontent">
                 <?=$product->intro_service?>
             </div>
-
-            <div id="Tokyo" class="tabcontent">
-                <h3>Tokyo</h3>
-                <p>Tokyo is the capital of Japan.</p>
-            </div>
         </div>
     </div>
     <h3 class="commom-title product-related_title text-center">
-        SẢN PHẨM LIÊN QUAN
+        DỊCH VỤ LIÊN QUAN
     </h3>
     <p class="text-center color-text">Luôn sẵn sáng hỗ trợ và tư vấn cho bạn để có sản phẩm tốt nhất.</p>
     <div class="product-related_box padding-container product-list_box">
@@ -130,9 +123,9 @@
     <!-- ----------------- -->
     @if (count($productViewed) != 0)
     <h3 style="text-transform: uppercase" class="commom-title product-related_title text-center">
-        Sản phẩm đã xem
+        Dịch vụ đã xem
     </h3>
-    <p class="text-center color-text">Sản phẩm bạn vừa xem.</p>
+    <p class="text-center color-text">Dịch vụ bạn vừa xem.</p>
     <div class="product-related_box padding-container product-list_box">
         @foreach ($productViewed as $item)
         <div class="product-item">

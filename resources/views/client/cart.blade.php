@@ -6,7 +6,7 @@
 @section('content')
 <div class="content padding-container text-center">
     <h3 class="title-page-name commom-title text-center">Giỏ hàng </h3>
-    <p class="text-center color-text"> Giỏ hàng của bạn , hãy chọn những thứ mình muốn </p>
+    <p class="text-center color-text"> Giỏ hàng của bạn , hãy chọn những dịch vụ bạn muốn </p>
     <div class="cart-box">
         <div class="">
             <table class="table">
@@ -46,7 +46,7 @@
                         <td><?=number_format($item['price'], 0 , '.')?>₫</td>
                         <td><?=number_format($item['price'] * $item['number'], 0 , '.')?>₫</td>
                         <td>
-                            <a onclick="return confirm('Bạn có muốn xoá sản phẩm này ?')"
+                            <a onclick="return confirm('Bạn có muốn xoá dịch vụ này ?')"
                                 href="{{route('cart.deleteCart' , $item['id'])}}" class="btn-delete-cart"><i
                                     class="fa-solid fa-trash-can"></i></a>
                         </td>
@@ -58,11 +58,11 @@
                 <button class="btn-footer btn-continue-now"><a href="{{route('client.product.product')}}"><i
                             class="fa-solid fa-arrow-left"></i> Tiếp tục
                         mua hàng</a></button>
-                <button class="btn-footer btn-update-cart"   style="color: #ffff;">Cập nhật giỏ hàng</button>
+                <button class="btn-footer btn-update-cart"   style="color: #ffff;">Cập nhật</button>
             </div>
         </div>
         <div class="total-money">
-            <h3 class="plus-cart">Cộng giỏ hàng</h3>
+            <h3 class="plus-cart">TỔNG TIỀN</h3>
             <div class="plus-cart-provisional">
                 <h4>Tạm tính</h4>
                 <h5> <?=number_format($sum, 0 , '.')?>₫</h5>
@@ -71,7 +71,7 @@
                 <h3 class="total-name">Tổng tiền</h3>
                 <h4 class="total-price"> <?=number_format($sum, 0 , '.')?>₫</h4>
             </div>
-            <button class="btn-check-out"><a href="{{route('order.order')}}">Tiền hành thanh toán</a></button>
+            <a href="{{route('order.order')}}"><button class="btn-check-out" style="color: #fff;">Tiền hành thanh toán</button></a>
         </div>
     </div>
     <div class="result"></div>

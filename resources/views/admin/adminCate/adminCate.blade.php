@@ -3,12 +3,12 @@
 @section('content')
 <div class="container">
     <div class="d-flex  justify-content-between align-item-center">
-        <h3 class="my-3">Danh mục sản phẩm </h3>
-        <button onclick="refresh()" class="btn btn-info back text-white mt-2">Refest</button>
+        <h3 class="my-3">Danh mục dịch vụ </h3>
+        <button onclick="refresh()" class="btn btn-info back text-white mt-2">Refresh</button>
     </div>
     <div class="row">
         <div class="col-3">
-            <h5 style="color: #D61C4E">Form add category</h5>
+            <h5 style="color: #D61C4E">Thêm danh mục</h5>
             <form class="mt-3" method="POST" action="{{route('cate.store')}}" enctype=multipart/form-data>
                 @csrf
                 <div class="mb-3">

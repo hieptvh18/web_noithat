@@ -12,6 +12,7 @@ use App\Http\Controllers\Backend\adminUser;
 
 use App\Http\Controllers\Frontend\form;
 use App\Http\Controllers\Frontend\Product;
+use App\Http\Controllers\Frontend\Service;
 use App\Http\Controllers\Frontend\Home;
 use App\Http\Controllers\Frontend\Contact;
 use App\Http\Controllers\Frontend\Cart;
@@ -126,10 +127,20 @@ Route::get('/' , [Home::class ,'index'])->name('home')->middleware('client');
 
 Route::get('/lien-he' , [Contact::class ,'index'])->name('contact');
 
+// product
+Route::prefix('/dich-vu')->name('client.product.')->group(function(){
+    Route::get('/' , [Service::class ,'index'])->name('product');
+    Route::get('/{id}' , [Service::class ,'getProductByCategory'])->name('service');
+    Route::get('/filter-select' , [Service::class ,'filterSelect'])->name('filterSelect');
+    Route::get('/filter-cate' , [Service::class ,'filterCate'])->name('filterCate');
+    Route::get('/filter-room' , [Service::class ,'filterRoom'])->name('filterRoom');
+    Route::get('/filter-search' , [Service::class ,'filterSearch'])->name('filterSearch');
+});
 
-Route::prefix('/san-pham')->name('client.product.')->group(function(){
+// categori
+Route::prefix('/danh-muc')->name('client.product.')->group(function(){
     Route::get('/' , [Product::class ,'index'])->name('product');
-    Route::get('/detail/{id}' , [Product::class ,'detail'])->name('detail');
+    Route::get('/{id}' , [Product::class ,'detail'])->name('detail');
     Route::get('/filter-select' , [Product::class ,'filterSelect'])->name('filterSelect');
     Route::get('/filter-cate' , [Product::class ,'filterCate'])->name('filterCate');
     Route::get('/filter-room' , [Product::class ,'filterRoom'])->name('filterRoom');

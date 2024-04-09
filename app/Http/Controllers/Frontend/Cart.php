@@ -60,7 +60,7 @@ class Cart extends Controller
   
             session()->put('cart',  $cart);
             $result = session('cart');
-            return redirect()->back()->with('success',  'Thêm giỏ hàng thành công');
+            return redirect()->back()->with('success',  'Đặt dịch vụ thành công');
     }
 
     public function updateCart(){
@@ -74,7 +74,7 @@ class Cart extends Controller
            }
            session()->forget('cart');       
            session()->put('cart', $cart);
-           session()->put('success', 'Update success !!!');
+           session()->put('success', 'Cập nhật thành công !!!');
            echo 'success';
     }
 

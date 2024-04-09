@@ -1,0 +1,7 @@
+===== setup chạy dự án:
+1 khởi động xampp
+2 mở project ở vs code
+3 mở terminal vs code
+4 chạy lệnh: php artisan serve
+5 mở link sau ở trình duyệt: http://localhost:8000 hoặc ấn Ctrl + click vào link ở terminal sau khi chạy lệnh 4
+

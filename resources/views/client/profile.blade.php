@@ -7,9 +7,15 @@
 <div class="content padding-container">
     <div class="content-asile">
         <div class="header-asile">
-            <img class="header-asile-img"
+            @if (auth()->user()->avatar)
+                <img class="header-asile-img"
+                src="{{asset('upload/'.auth()->user()->avatar)}}"
+                alt="">
+            @else
+                <img class="header-asile-img"
                 src="https://thumbs.dreamstime.com/b/male-avatar-icon-flat-style-male-user-icon-cartoon-man-avatar-hipster-vector-stock-91462914.jpg"
                 alt="">
+            @endif
             <div class="header-info-asile">
                 <h4 class="header-info-name">{{auth()->user()->name}}</h4>
                 <a href="" class="header-info-asile-edit"> <i class="fa-solid fa-pen"></i> Sửa thông tin</a>
@@ -190,7 +196,7 @@
                                 <div class="order-product">
                                     <span class="name">{{$item->product->name}}</span>
                                     <br>
-                                    <span>{{$item->atribute}}</span>
+                                    {{-- <span>{{$item->atribute}}</span> --}}
                                 </div>
                             </div>
 

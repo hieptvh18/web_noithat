@@ -60,9 +60,9 @@
 
     </div>
     <h3 class="header-footer-title commom-title text-center" style="margin-top:50px">
-        Dịch vụ trending
+        Dịch vụ mới nhất
     </h3>
-    <p class="text-center color-text">Cập nhật những dịch vụ trending</p>
+    <p class="text-center color-text">Cập nhật các dịch vụ mới nhất</p>
     <div class="product-list_box padding-container">
         @foreach ($productMoreView as $item)
         <div class="product-item">
@@ -94,60 +94,62 @@
     </div>
 
     <div class="category_image-box padding-container">
+        {{-- dich vu(category) --}}
         <div class="category_image-above-box ">
             <div class="category_image-above-left">
                 <div class="category_image-item-box">
-                    <img src="https://theme.hstatic.net/1000409762/1000752712/14/img_banner_center_1.jpg?v=10"
+                    <img src="https://lh4.googleusercontent.com/proxy/A7rcTzu7G5mzwihDWKjpAaHdhgwmNPh5maVgBssrln5Fx74q7TbBjs5NYk_JnTR_r3_wnHOOHhhCGpNTZ7IDtB92UgZ42KSkzr5v01OgSIlztJt8uw"
                         alt="Avatar" class="image">
                     <div class="overlay">
-                        <div class="text">Sản phẩm mới nhất</div>
+                        <div class="text">Dịch vụ chuyển đổi số</div>
                     </div>
                 </div>
                 <div class="category_image-item-box" style="margin-top: 25px">
-                    <img src="https://theme.hstatic.net/1000409762/1000752712/14/img_banner_center_2.jpg?v=10"
+                    <img src="https://www.gosell.vn/blog/wp-content/uploads/2023/06/banner-online-01.jpg"
                         alt="Avatar" class="image">
                     <div class="overlay">
-                        <div class="text">Sản phẩm mới nhất</div>
+                        <div class="text">Dịch vụ thiết kế banner</div>
                     </div>
                 </div>
             </div>
             <div class="category_image-above-right">
                 <div class="category_image-item-box">
-                    <img src="https://theme.hstatic.net/1000409762/1000752712/14/img_banner_center_3.jpg?v=10"
+                    <img src="https://i.pinimg.com/736x/a4/89/13/a48913daea801deb1eaaad21f01bbc0c.jpg"
                         alt="Avatar" class="image">
                     <div class="overlay">
-                        <div class="text">Hello World</div>
+                        <div class="text">Dịch vụ chiến lược marketing</div>
                     </div>
                 </div>
             </div>
         </div>
+        {{-- doi tac --}}
         <div class="category_image-down-box">
             <div class="category_image-item-box">
-                <img src="https://theme.hstatic.net/1000409762/1000752712/14/img_collection_info_1.jpg?v=10"
+                <img style="height: 100%; object-fit: cover;" src="https://www.adina.vn/assets/projects/elecom/elecom-showcase-06-1-570x367.png"
                     alt="Avatar" class="image">
                 <div class="overlay">
-                    <div class="text">Sản phẩm mới nhất</div>
+                    <div class="text">Thiết kế nhận diện thương hiệu ELECOM</div>
                 </div>
             </div>
             <div class="category_image-item-box">
-                <img src="https://theme.hstatic.net/1000409762/1000752712/14/img_collection_info_2.jpg?v=10"
+                <img style="height: 100%; object-fit: cover;" src="https://www.adina.vn/assets/projects/nhu-an/thiet-ke-thuong-hieu-kien-truc-nhu-an-570x367.jpg"
                     alt="Avatar" class="image">
                 <div class="overlay">
-                    <div class="text">Sản phẩm mới nhất</div>
+                    <div class="text">Thiết kế nhận diện thương hiệu NHƯ AN</div>
                 </div>
             </div>
             <div class="category_image-item-box">
-                <img src="https://theme.hstatic.net/1000409762/1000752712/14/img_collection_info_4.jpg?v=10"
+                <img style="height: 100%; object-fit: cover;" src="https://www.adina.vn/assets/projects/t-flower/showcase-tflowers7-570x367.jpg"
                     alt="Avatar" class="image">
                 <div class="overlay">
-                    <div class="text">Sản phẩm mới nhất</div>
+                    <div class="text">Thiết kế nhận diện thương hiệu TFLOWERS</div>
                 </div>
             </div>
             <div class="category_image-item-box">
-                <img src="https://theme.hstatic.net/1000409762/1000752712/14/img_collection_info_3.jpg?v=10"
+                <img style="height: 100%; object-fit: cover;" src="https://theme.hstatic.net/1000409762/1000752712/14/img_collection_info_3.jpg?v=10"
                     alt="Avatar" class="image">
                 <div class="overlay">
-                    <div class="text">Sản phẩm mới nhất</div>
+                    <div class="text">Thiết kế nhận diện thương hiệu VIETNAM AUTO CARE</div>
                 </div>
             </div>
         </div>

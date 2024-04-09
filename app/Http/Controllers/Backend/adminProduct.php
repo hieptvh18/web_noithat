@@ -50,16 +50,25 @@ class adminProduct extends Controller
 
 
     public function store(Request $request){
+            $request->validate([
+                'name'=>'required',
+                'price'=>'required|integer',
+                'price_sale'=>'nullable|integer',
+                'description'=>'required',
+                'intro_service'=>'required',
+            ]);
         // dd($request->all());
         
             $product = new Product();
             if($request->hasFile('image')){
               $file = $request->image;
               $filename =  $file->getClientoriginalName();
-             $file->move(public_path('/upload'), $filename);
+                $file->move(public_path('/upload'), $filename);
+                $product->image = $filename;
             }
-            $product->image = $filename;
             $product->fill($request->all());
+            $product->quantity = 10000;
+
             $product->save();
             return redirect()->route('product.index')->with('success' , 'Add product success !!!');
        

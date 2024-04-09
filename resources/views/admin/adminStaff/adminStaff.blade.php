@@ -4,7 +4,7 @@
 <div class="container">
     <div class="card mt-4">
         <div class="">
-            <h5 class="card-header">Table Staff</h5>
+            <h5 class="card-header">Quản lý khách hàng</h5>
             <!-- <button class="btn btn-primary"></button> -->
         </div>
         <div class="table-responsive text-nowrap">
@@ -14,24 +14,24 @@
                         <th>Id</th>
                         
                         <th>Avatar</th>
-                        <th>Name</th>
+                        <th>Tên</th>
                         <th>Email</th>
-                        <th>Phone</th>
-                        <th>Role</th>
-                        <th>Status</th>
-                        <th>Actions</th>
+                        <th>Điện thoại</th>
+                        {{-- <th>Vai trò</th> --}}
+                        <th>Trạng thái</th>
+                        <th>Hành động</th>
                     </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
                     @foreach($staff as $item)
                     <tr>
                         <td>{{$item->id}}</td>
-                        <td> <img width="40px" src="{{$item->avatar}}" alt="Avatar" class="rounded-circle" /></td>
+                        <td> <img width="40px" src="{{asset('upload/'.$item->avatar)}}" alt="Avatar" class="rounded-circle" /></td>
                         <td>{{$item->name}}</td>
                         <td>{{$item->email}}</td>
                         <td>{{$item->phone}}</td>
 
-                        <td>
+                        {{-- <td>
                             <select class="form-select" data-id="{{$item->id}}" style="width:150px" aria-label="Default select example">
                                 <option @if ($item->role ==  0)
                                     selected
@@ -41,7 +41,7 @@
                                     selected
                                 @endif value="1">Superadmin</option>
                             </select>
-                        </td>
+                        </td> --}}
                         <td>
                             @if ($item->status == 1)
                             <span class="badge bg-label-success me-1">Active</span>

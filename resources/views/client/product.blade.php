@@ -1,12 +1,12 @@
 @extends('client.layout.master')
-@section('title' , 'Sản phẩm')
+@section('title' , 'Dịch vụ')
 @section('css')
 <link rel="stylesheet" href="{{asset('/assets/client/css/Product.css')}}">
 @endsection
 @section('content')
 
 <div class="banner">
-    <img class="w-100" src="https://theme.hstatic.net/1000409762/1000752712/14/collection_banner.jpg?v=10" alt="">
+    <img class="w-100" src="https://angito.com.vn/uploads/Giai-Phap-Thuong-Hieu/SME-Brand/SME.jpg" alt="">
 </div>
 
 <div class="content padding-container">
@@ -16,11 +16,11 @@
             Filter
         </div>
         <div class="title-box text-center">
-            <h3 class="commom-title">Tất cả sản phẩm</h3>
+            <h3 class="commom-title">Dịch vụ thuộc danh mục '{{$parentCategoryName}}'</h3>
         </div>
         <div class="selected-box">
             <select class="select" id="filter-select" name="" id="">
-                <option value="0">Tất cả sản phẩm</option>
+                <option value="0">Tất cả dịch vụ</option>
                 <option value="1">Mới nhất</option>
                 <option value="2">Cũ nhất</option>
             </select>
@@ -33,10 +33,10 @@
 
         <!-- Overlay content -->
         <div class="overlay-content">
-            <button class="accordion">Loai hinh sản phẩm</button>
+            <button class="accordion">Loai hinh dịch vụ</button>
             <div class="panel">
                 <ul>
-                    <li><a href=""><i class="fa-solid fa-caret-right"></i> Tất cả sản phẩm</a></li>
+                    <li><a href=""><i class="fa-solid fa-caret-right"></i> Tất cả dịch vụ</a></li>
                     @foreach ($rooms as $item)
                     <li class="room-item" style="cursor:pointer"  data-id="{{$item->id}}"><a><i class="fa-solid fa-caret-right"></i>{{$item->name}}</a></li>
                     @endforeach
@@ -52,22 +52,12 @@
                 </ul>
             </div>
 
-            <button class="accordion">GIÁ SẢN PHẨM</button>
+            <button class="accordion">GIÁ dịch vụ</button>
             <div class="panel">
                 <ul>
                     <li><a href=""><i class="fa-solid fa-dollar-sign"></i> Dưới 500,000₫</a></li>
                     <li><a href=""><i class="fa-solid fa-dollar-sign"></i> 500,000₫ - 1,000,000₫</a></li>
                     <li><a href=""><i class="fa-solid fa-dollar-sign"></i> 1,000,000₫ - 1,500,000₫</a></li>
-                </ul>
-            </div>
-            <button class="accordion">MÀU SẮC</button>
-            <div class="panel">
-                <ul class="filter-list-color">
-                    <li><a class="color-blue" href=""></a></li>
-                    <li><a class="color-red" href=""></a></li>
-                    <li><a class="color-pink" href=""></a></li>
-                    <li><a class="color-gray" href=""></a></li>
-                    <li><a class="color-orange" href=""></a></li>
                 </ul>
             </div>
         </div>

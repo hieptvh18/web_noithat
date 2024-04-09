@@ -71,6 +71,6 @@ class Profile extends Controller
         $cate->status = 2;
         $cate->save();
         session()->put('order' , $cate);
-        return redirect()->route('profile.index')->with('success' , 'Update success !!!');
+        return redirect()->route('profile.index')->with('success' , 'Cập nhật thành công !!!');
     }
 }

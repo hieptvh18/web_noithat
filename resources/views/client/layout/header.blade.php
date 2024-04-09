@@ -3,7 +3,7 @@
 @endphp
 <header class="header">
     <div class="header-top">
-        <p>Giải pháp thương hiệu tối ưu! Phù hợp nhiều loại hình doanh nghiệp</p>
+        <p class="animate__animated animate__shakeX">Giải pháp thương hiệu tối ưu! Phù hợp nhiều loại hình doanh nghiệp</p>
     </div>
     <div class="header-main padding-container">
         <div class="header-main_log">
@@ -97,7 +97,7 @@
                 <span>Giỏ hàng hiện đang trống !!!</span>
                 @endif
 
-                <button class="cart-list-view"><a href="{{route('cart.cart')}}" style="text-decoration:none;color:blue">Xem giỏ hàng </a></button>
+                <button class="cart-list-view"><a href="{{route('cart.cart')}}" style="text-decoration:none;color:blue">Xem dịch vụ đã đặt </a></button>
             </div>
         </div>
     </div>

@@ -38,8 +38,7 @@
             <div class="header-footer_main padding-container">
                 <div class="header-footer_description">
                     <h4 class="title-header color-primary">Giới thiệu</h4>
-                    <p class="color-text" style="text-align:justify ;">Trang mua sắm trực tuyến nội thất mang phong cách
-                        việt, giúp bạn cập nhập và nắm bắt xu hướng mới</p>
+                    <p class="color-text" style="text-align:justify ;">Chúng tôi cam kết mang đến cho doanh nghiệp của bạn quy trình cũng như chất lượng sản phẩm tốt nhất.</p>
                     <img src="https://theme.hstatic.net/1000409762/1000752712/14/logo_bct.png?v=10" alt="">
                 </div>
                 <div class="header-footer_contact">

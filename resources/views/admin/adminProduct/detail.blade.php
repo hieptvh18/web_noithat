@@ -1,5 +1,5 @@
 @extends('admin.layout.main')
-@section('title' , 'Admin Product')
+@section('title' , 'Dịch vụ')
 @section('css')
 <link rel="stylesheet" href="{{asset('assets/admin/product/product.css')}}">
 @endsection
