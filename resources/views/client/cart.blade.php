@@ -13,7 +13,7 @@
                 <thead>
                     <th>STT</th>
                     <th>Tên</th>
-                    <th>Số lượng</th>
+                    {{-- <th>Số lượng</th> --}}
                     <th>Giá</th>
                     <th>Tổng tiền</th>
                     <th>Xoá</th>
@@ -28,12 +28,12 @@
                             <img src="{{ asset('upload/' . $item['img'])}}" alt="" class="cart_img">
                             <div class="product_cart-info-rigth">
                                 <p class="product_name">{{$item['name']}}</p>
-                                <ul style="margin-top:12px" class="product_atribute-list">
+                                {{-- <ul style="margin-top:12px" class="product_atribute-list">
                                     <li>{{$item['size']}}</li>
-                                </ul>
+                                </ul> --}}
                             </div>
                         </td>
-                        <td>
+                        {{-- <td>
                             <div class="number-input">
                                 <button data-id="{{$item['id']}}" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
                                     class="minus change-quantity" ><i class="fa-solid fa-minus"></i></button>
@@ -42,7 +42,7 @@
                                 <button data-id="{{$item['id']}}" onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
                                     class="plus change-quantity"><i class="fa-solid fa-plus"></i></button>
                             </div>
-                        </td>
+                        </td> --}}
                         <td><?=number_format($item['price'], 0 , '.')?>₫</td>
                         <td><?=number_format($item['price'] * $item['number'], 0 , '.')?>₫</td>
                         <td>

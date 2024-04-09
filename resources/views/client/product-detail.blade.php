@@ -60,15 +60,15 @@
                     </ul>
                 </div> --}}
                 {{-- <p class="alert-product-number">Còn {{$product->quantity}} sản phẩm</p> --}}
-                <div class="">
+                <div class="" style="text-align:center">
                     <div class="number-input">
-                        <a onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
-                            class="minus"><i class="fa-solid fa-minus"></i></a>
-                        <input class="quantity" min="0" name="quantity" value="1" type="number">
-                        <a onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"><i
-                                class="fa-solid fa-plus"></i></a>
+                        {{-- <a onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+                            class="minus"><i class="fa-solid fa-minus"></i></a> --}}
+                        <input class="quantity" min="0" name="quantity" style="display: none" disabled value="1" type="number">
+                        {{-- <a onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"><i --}}
+                                {{-- class="fa-solid fa-plus"></i></a>    --}}
                     </div>
-                    <button class="btn-add-to-cart">Đặt dịch vụ</button>
+                    <button class="btn-add-to-cart">Đặt dịch vụ ngay</button>
                 </div>
             </form>
             <div class="tabs1">

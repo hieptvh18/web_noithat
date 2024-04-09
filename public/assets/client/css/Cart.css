@@ -161,7 +161,7 @@ input[type="number"] {
   .btn-add-to-cart {
     width: 200px;
     height: 40px;
-    margin-left: 20px;
+    /* margin-left: 20px; */
     background-color: #fff;
     border: 1px solid var(--color-primary);
     color: var(--color-primary);
