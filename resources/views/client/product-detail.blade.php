@@ -60,7 +60,7 @@
                     </ul>
                 </div> --}}
                 {{-- <p class="alert-product-number">Còn {{$product->quantity}} sản phẩm</p> --}}
-                <div class="" style="text-align:center">
+                <div class="">
                     <div class="number-input">
                         {{-- <a onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
                             class="minus"><i class="fa-solid fa-minus"></i></a> --}}
@@ -68,7 +68,13 @@
                         {{-- <a onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"><i --}}
                                 {{-- class="fa-solid fa-plus"></i></a>    --}}
                     </div>
-                    <button class="btn-add-to-cart">Đặt dịch vụ ngay</button>
+                    <div class="">
+                        <p style="float: left; margin-bottom: 10px; font-weight: bold;">Yêu cầu chi tiết</p>
+                        <textarea name="note" id="note" cols="25" rows="6" style="width: 100%; padding: 5px;" placeholder="Nhập yêu cầu chi tiết của bạn"></textarea>
+                    </div>
+                    <div style="text-align: center; margin-top: 10px;">
+                        <button class="btn-add-to-cart">Đặt dịch vụ ngay</button>
+                    </div>
                 </div>
             </form>
             <div class="tabs1">

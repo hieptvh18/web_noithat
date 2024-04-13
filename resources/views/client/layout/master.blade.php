@@ -45,10 +45,10 @@
 
         <div class="list-contact-icon-box">
             <ul class="list-contact-icon">
-                <li class="bg-phone"><i class="fa-solid fa-phone"></i></li>
-                <li class="bg-facebook"><i class="fa-brands fa-facebook-f"></i></li>
-                <li class="bg-youtobe"><i class="fa-brands fa-youtube"></i></li>
-                <li class="bg-twiter"><i class="fa-brands fa-twitter"></i></li>
+                <li class="bg-phone"><a href="tel:1900000" style="color: #fff;"><i class="fa-solid fa-phone"></i></a></li>
+                <li class="bg-facebook"><a href="https://facebook.com" style="color: #fff;"><i class="fa-brands fa-facebook-f"></i></a></li>
+                <li class="bg-youtobe"><a href="https://youtobe.com" style="color: #fff;"><i class="fa-brands fa-youtube"></i></a></li>
+                <li class="bg-twiter"><a href="https://twitter.com" style="color: #fff;"><i class="fa-brands fa-twitter"></i></a></li>
             </ul>
         </div>
     </div>

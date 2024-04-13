@@ -23,13 +23,17 @@
         <span class="color-text">Thời gian làm việc</span>
         <p class="content_form-address">Thứ 2 đến Thứ 6 từ 8h đến 18h; Thứ 7 và Chủ nhật từ 8h00 đến 17h00</p>
         <h3 class="content_form-title">Gửi thắc mắc cho chúng tôi</h3>
-        <form action="form-contact">
-            <input type="text" class="input-contact" placeholder="Tên của bạn ">
+        @if(session('message'))
+            <div class="alert alert-success">{{session('message')}}</div>
+        @endif
+        <form action="{{route('contact.store')}}" method="POST" >
+            @csrf
+            <input type="text" name="name" class="input-contact" required placeholder="Tên của bạn ">
             <div class="form-grid-input">
-                <input type="text" class="input-contact" placeholder="Email của bạn">
-                <input type="text" class="input-contact" placeholder="Số điện thoại của bạn">
+                <input type="email" name="email" class="input-contact" placeholder="Email của bạn">
+                <input type="text" name="phone" class="input-contact" required placeholder="Số điện thoại của bạn">
             </div>
-            <textarea class="input-contact-textarea" placeholder="Nội dung" name=""></textarea>
+            <textarea class="input-contact-textarea" name="description" required placeholder="Nội dung" name=""></textarea>
             <button class="btn-submit-contact">Gửi cho chúng tôi</button>
         </form>
     </div>

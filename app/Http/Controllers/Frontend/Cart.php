@@ -12,6 +12,7 @@ class Cart extends Controller
 {
      
     public function index(){
+        $cart = array();
         if( session()->exists('cart')){
             $cart = session('cart');
         }
@@ -34,6 +35,7 @@ class Cart extends Controller
                         'size' => 'Size:'  . '-' . $request->size  . '|'  . 'Color :' . $request->color,
                         'price' => $rowProduct->price_sale,
                         'number' => $cart[$request->id]['number'] + $request->quantity,
+                        'note' => $request->note
                     ];
                 } else {
                     $cart[$request->id] = [
@@ -43,6 +45,7 @@ class Cart extends Controller
                         'size' => 'Size:'  . '-' . $request->size   . '|'  . 'Color :' . $request->color,
                         'price' => $rowProduct->price_sale,
                         'number' =>$request->quantity,
+                        'note' => $request->note
                     ];
                 }
             } else {
@@ -54,6 +57,7 @@ class Cart extends Controller
                     'size' => 'Size:'  . '-' . $request->size   . '|'  . 'Color :' . $request->color,
                     'price' => $rowProduct->price_sale,
                     'number' => $request->quantity,
+                    'note' => $request->note
                 ];
             }
 

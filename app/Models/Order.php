@@ -14,4 +14,8 @@ class Order extends Model
     public function orderDetail(){
         return $this->hasMany(\App\Models\OrderDetail::class ,  'order_id' , 'id');
     }
+
+    public function orderUserMedias(){
+        return $this->belongsToMany(User::class,'order_user_medias');
+    }
 }

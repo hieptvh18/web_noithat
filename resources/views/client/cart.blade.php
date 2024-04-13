@@ -55,7 +55,7 @@
 
             </table>
             <div class="btn-table-footer">
-                <button class="btn-footer btn-continue-now"><a href="{{route('client.product.product')}}"><i
+                <button class="btn-footer btn-continue-now"><a href="/"><i
                             class="fa-solid fa-arrow-left"></i> Tiếp tục
                         mua hàng</a></button>
                 <button class="btn-footer btn-update-cart"   style="color: #ffff;">Cập nhật</button>

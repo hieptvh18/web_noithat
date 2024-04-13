@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\Auth;
 
 class Product extends Controller
 {
+    public function __construct()
+    {
+        
+    }
     // protected $productId;
     
     public function index(){

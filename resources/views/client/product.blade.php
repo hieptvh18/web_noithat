@@ -16,11 +16,14 @@
             Filter
         </div>
         <div class="title-box text-center">
-            <h3 class="commom-title">Dịch vụ thuộc danh mục '{{$parentCategoryName}}'</h3>
+            @if (!empty($parentCategory))
+                <h3 class="commom-title">Dịch vụ thuộc danh mục '{{$parentCategory->name}}'</h3>
+            @else
+                <h3 class="commom-title">Tất cả dịch vụ của chúng tôi</h3>
+            @endif
         </div>
         <div class="selected-box">
             <select class="select" id="filter-select" name="" id="">
-                <option value="0">Tất cả dịch vụ</option>
                 <option value="1">Mới nhất</option>
                 <option value="2">Cũ nhất</option>
             </select>
@@ -88,9 +91,6 @@
     </div>
 
 </div>
-
-
-
 @endsection
 @section('script')
 <script src="{{asset('assets/client/js/filter-product.js')}}"></script>
@@ -98,18 +98,17 @@
     $(document).ready(function() {
         $('#filter-select').on('change', function() {
             let valueSelect=  $(this).val();
-            $.get("<?= route('client.product.filterSelect') ?>", {
+            $.get("<?= route('client.service.filterSelect') ?>", {
                 valueSelect: valueSelect,
+                cate_id:{{$parentCategory ? $parentCategory->id : ''}}
             }, function($data) {
                 $('.product-list_box').html($data);
         });
-
-   
     });
     
     $('.cate-item').on('click' , function(){
         let cate_id =  $(this).data('id');
-        $.get("<?= route('client.product.filterCate') ?>", {
+        $.get("<?= route('client.service.filterCate') ?>", {
             cate_id: cate_id
         }, function($data) {
         $('.product-list_box').html($data);
@@ -117,7 +116,7 @@
     });
     $('.room-item').on('click' , function(){
         let room_id =  $(this).data('id');
-        $.get("<?= route('client.product.filterRoom') ?>", {
+        $.get("<?= route('client.service.filterRoom') ?>", {
             room_id: room_id
         }, function($data) {
         $('.product-list_box').html($data);

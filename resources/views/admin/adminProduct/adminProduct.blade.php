@@ -4,21 +4,20 @@
 <div class="container">
     <div class="d-flex  justify-content-between align-item-center">
         <h3 class="my-3">Quản lý dịch vụ chi tiết</h3>
-        <button class="btn btn-info back text-white mt-2">Refresh</button>
     </div>
     <h3 id="result"></h3>
     <a href="{{route('product.create')}}" class="btn btn-primary">Thêm mới</a>
     <table class="table">
         <thead>
             <tr class="text-nowrap">
-                <th>Id</th>
-                <th>Name</th>
-                <th>Image</th>
-                <th>Cate</th>
-                <th>Price</th>
-                <th>Quantity</th>
-                <th>Status</th>
-                <th>Actions</th>
+                <th>ID</th>
+                <th>Tên</th>
+                <th>Hình ảnh</th>
+                <th>Nhóm dịch vụ</th>
+                <th>Giá</th>
+                <th>Chi tiết</th>
+                <th>Trạng thái</th>
+                <th>Hành động</th>
             </tr>
         </thead>
         <tbody class="table-border-bottom-0">
@@ -29,7 +28,9 @@
                 <td><img width="50px" src="{{asset('upload/' .$item->image) }}" alt=""></td>
                 <td>{{$item->category->name}}</td>
                 <td>{{$item->price}}</td>
-                <td>{{$item->quantity}}</td>
+                <td>
+                    <a href="{{route('product.detail.detail' , $item->id)}}" class="btn btn-info">Xem</a>
+                </td>
                 <td>
                     <select data-id="{{$item->id}}" class="form-select product-status">
                         <option @if($item->status == 1) selected @endif value="1">Active</option>

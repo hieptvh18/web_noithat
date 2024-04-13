@@ -5,6 +5,7 @@
 @endsection
 @section('content')
 <div class="container">
+    <a href="{{route('product.index')}}" class="btn btn-primary mt-3"><-- Quay lại trang danh sách</a>
     <div class="d-flex my-4 product-info-box">
         <div class="col-4 product-info bg-info text-white">
             <!-- <img src="{{asset('upload/' . $detail->image)}}" alt=""> -->
@@ -74,8 +75,8 @@
             </div>
         </div>
     </div>
-    <button class="btn btn-light w-100 btn-properties btn-white">
+    {{-- <button class="btn btn-light w-100 btn-properties btn-white">
         <a href="{{ route('product.detail.distortion' , $detail->id) }}" >Properties &nbsp; <span class="bg-info p-2 text-white rounded">{{$countProperties}}</span></a>
-    </button>
+    </button> --}}
 </div>
 @endsection

@@ -69,7 +69,7 @@
         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class='bx bxs-category'></i>&nbsp;&nbsp;&nbsp;&nbsp;
-                <div data-i18n="Layouts">Danh mục</div>
+                <div data-i18n="Layouts">Nhóm dịch vụ</div>
             </a>
             <ul class="menu-sub">
                 {{-- <li class="menu-item">
@@ -79,7 +79,7 @@
                 </li> --}}
                 <li class="menu-item">
                     <a href="{{route('cate.index')}}" class="menu-link">
-                        <div data-i18n="Blank">Quản lý danh mục</div>
+                        <div data-i18n="Blank">Quản lý nhóm dịch vụ</div>
                     </a>
                 </li>
             </ul>
@@ -88,19 +88,19 @@
         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class='bx bxs-category'></i>&nbsp;&nbsp;&nbsp;&nbsp;
-                <div data-i18n="Layouts">Sản phẩm</div>
+                <div data-i18n="Layouts">Dịch vụ</div>
             </a>
             <ul class="menu-sub">
                 <li class="menu-item">
                     <a href="{{route('product.index')}}" class="menu-link">
-                        <div data-i18n="Fluid">Quản lý sản phẩm</div>
+                        <div data-i18n="Fluid">Quản lý dịch vụ</div>
                     </a>
                 </li>
-                <li class="menu-item">
+                {{-- <li class="menu-item">
                     <a href="{{route('product.propertie')}}" class="menu-link">
                         <div data-i18n="Blank">Thuộc tính</div>
                     </a>
-                </li>
+                </li> --}}
             </ul>
         </li>
 
@@ -136,6 +136,15 @@
             <a href="{{route('order.index')}}" class="menu-link">
                 <i class='bx bxs-food-menu'></i>
                 <div data-i18n="Layouts">&nbsp;&nbsp;&nbsp;&nbsp;Đơn đặt</div>
+            </a>
+        </li>
+        @endif
+
+        @if (auth()->user()->role == 1)
+        <li class="menu-item">
+            <a href="{{route('contact.index')}}" class="menu-link">
+                <i class='bx bxs-food-menu'></i>
+                <div data-i18n="Layouts">&nbsp;&nbsp;&nbsp;&nbsp;Liên hệ</div>
             </a>
         </li>
         @endif

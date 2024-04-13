@@ -4,9 +4,9 @@
     <div class="row mt-4">
         <div class="col-xl-3 col-md-6">
             <div class="card bg-success text-white mb-2">
-                <h3 class="card-body text-white">Customer</h3>
+                <h3 class="card-body text-white">Khách hàng</h3>
                 <div class="card-footer d-flex align-items-center justify-content-between" style="align-items: center;">
-                    <a class="small  stretched-link" >View customer</a>
+                    <a class="small  stretched-link" href="{{route('staff.index')}}">View customer</a>
                     <h3 class="count text-white">{{$customer}}</h3>
                     <i class="fas fa-address-card icon-count"></i>
                 </div>
@@ -14,9 +14,9 @@
         </div>
         <div class="col-xl-3 col-md-6">
             <div class="card bg-warning text-white mb-4">
-                <h3 class="card-body text-white">Category</h3>
+                <h3 class="card-body text-white">Nhóm dịch vụ</h3>
                 <div class="card-footer d-flex align-items-center justify-content-between">
-                    <a class="small  stretched-link text-white" href="thong-tin-hoa-don">View category</a>
+                    <a class="small  stretched-link text-white" href="{{route('cate.index')}}">View category</a>
                     <h3 class="count text-white">{{$category}}</h3>
                     <i class="fas fa-receipt icon-count"></i>
                 </div>
@@ -24,9 +24,9 @@
         </div>
         <div class="col-xl-3 col-md-6">
             <div class="card bg-info text-white mb-4">
-                <h3 class="card-body text-white">Product</h3>
+                <h3 class="card-body text-white">Dịch vụ</h3>
                 <div class="card-footer d-flex align-items-center justify-content-between">
-                    <a class="small  stretched-link text-white"  href="danh-sach-admin">View product</a>
+                    <a class="small  stretched-link text-white"  href="{{route('product.index')}}">View product</a>
                     <h3 class="count text-white">{{$product}}</h3>
                     <i class="fas fa-users-cog icon-count"></i>
                 </div>
@@ -34,10 +34,10 @@
         </div>
         <div class="col-xl-3 col-md-6">
             <div class="card bg-danger text-white mb-4">
-                <h3 class="card-body text-white">Staff</h3>
+                <h3 class="card-body text-white">Liên hệ</h3>
                 <div class="card-footer d-flex align-items-center justify-content-between">
-                    <a class="small stretched-link text-white" href="danh-sach-mon?trang=1">View staff</a>
-                    <h3 class="count text-white">{{$staff}}</h3>
+                    <a class="small stretched-link text-white" href="{{route('contact.index')}}">View contact</a>
+                    <h3 class="count text-white">{{$contact}}</h3>
                     <i class="fas fa-brush icon-count"></i>
                 </div>
             </div>
@@ -61,7 +61,7 @@
         ]);
 
         var options = {
-            title: 'Thống kê sản phẩm theo danh mục'
+            title: 'Thống kê dịch vụ theo từng nhóm dịch vụ'
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));

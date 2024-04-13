@@ -32,7 +32,8 @@
                 <span style="color: red;text-align:left">{{$errors->first('phone')}}</span>
                 @endif
             </div>
-            <textarea class="input-contact-textarea" name="note" placeholder="Nội dung" name=""></textarea>
+            {{dd(session('cart'))}}
+            <textarea class="input-contact-textarea" name="note" placeholder="Nội dung" name="">{{session('cart') ? session('cart')['note'] : ''}}</textarea>
         </div>
         <div class="total-money">
             <div class="order-box">

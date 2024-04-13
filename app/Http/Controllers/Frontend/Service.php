@@ -15,14 +15,28 @@ use Illuminate\Support\Facades\Auth;
 class Service extends Controller
 {
     // protected $productId;
+
+    public function allService()
+    {
+        $services = ModelProduct::all();
+        $cates = Category::all();
+
+        return view('client.product' , [
+            'rooms' => [],
+            'cates' => $cates,
+            'products' => $services,
+            'parentCategory'=>''
+        ]);
+    }
     
     public function getProductByCategory($cateId){
         $rooms = Room::all();
         
         $cates = Category::all();
-        $parentCategoryName = Category::find($cateId)->name;
+        $parentCategory = Category::find($cateId);
         $products = ModelProduct::select('id' , 'name' , 'image' , 'price' , 'price_sale')
                 ->orderby('products.id' , 'desc')
+                ->where('status',1)
                 ->where('cate_id',$cateId)
                 ->paginate(request('limit') ?? 20);
 
@@ -31,7 +45,7 @@ class Service extends Controller
             'rooms' => $rooms,
             'cates' => $cates,
             'products' => $products,
-            'parentCategoryName'=>$parentCategoryName
+            'parentCategory'=>$parentCategory
         ]);
     }
 
@@ -63,18 +77,19 @@ class Service extends Controller
         ]);
     } 
 
-    public function filterSelect(){
+    public function filterSelect(Request $request){
         $query = ModelProduct::select('id'  ,'name' , 'image' , 'price' , 'price_sale' , 'quantity_view')
         ->where('products.status' , 1)
-        ->skip(0)->take(10);
+        ->when($request->cate_id, function($query) use ($request){
+            $query->where('cate_id',$request->cate_id);
+        })
+        ->limit(20);
         $products = [];
         $selectValue = $_GET['valueSelect'] ? $_GET['valueSelect'] : '';
         if($selectValue == 1){
            $products =   $query->orderby('products.id' , 'desc')->get();
         }else if($selectValue == 2){
             $products =   $query->orderby('products.id' , 'asc')->get();
-        }else{
-            $products =  ModelProduct::all();
         }
 
         $this->renderAjax($products);
@@ -83,8 +98,13 @@ class Service extends Controller
     public function filterCate(){
         $cate_id = $_GET['cate_id'] ? $_GET['cate_id'] : '';
         $product = ModelProduct::select('id'  ,'name' , 'image' , 'price' , 'price_sale' , 'quantity_view')
-        ->where('products.status' , 1)->where('cate_id' , '=' , $cate_id)
-        ->skip(0)->take(10)->get();
+        ->where('products.status' , 1);
+
+        if($cate_id){
+            $product = $product->where('cate_id' , '=' , $cate_id);
+        }
+        
+        $product->skip(0)->take(10)->get();
         $this->renderAjax($product);
     }
 

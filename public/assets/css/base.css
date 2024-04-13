@@ -11,6 +11,16 @@ body {
     /* height: 2000px; */
 }
 
+.alert.alert-success{
+    background: #00d500;
+    color: #f3f3f3;
+    padding: 10px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
 a{
     text-decoration: none;
 }

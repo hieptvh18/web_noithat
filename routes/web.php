@@ -8,8 +8,7 @@ use App\Http\Controllers\Backend\adminCate;
 use App\Http\Controllers\Backend\adminProduct;
 use App\Http\Controllers\Backend\adminOrder;
 use App\Http\Controllers\Backend\adminUser;
-
-
+use App\Http\Controllers\Backend\ContactController;
 use App\Http\Controllers\Frontend\form;
 use App\Http\Controllers\Frontend\Product;
 use App\Http\Controllers\Frontend\Service;
@@ -62,6 +61,12 @@ Route::middleware('auth')->prefix('quan-tri')->group(function(){
         Route::get('updateStatus' ,  [adminOrder::class ,'updateStatus'])->name('updateStatus');
         Route::get('deleteOrderDetail/{id}' ,  [adminOrder::class ,'deleteOrderDetail'])->name('deleteOrderDetail');
         Route::get('delete/{id}' ,  [adminOrder::class ,'delete'])->name('delete');
+    });
+
+    Route::prefix('lien-he')->name('contact.')->group(function(){
+        Route::get('/' ,  [ContactController::class ,'index'])->name('index');
+        Route::get('updateStatus/{id}' ,  [ContactController::class ,'updateStatus'])->name('updateStatus');
+        Route::get('delete/{id}' ,  [ContactController::class ,'delete'])->name('delete');
     });
 
     Route::prefix('danh-muc-sp')->name('cate.')->group(function(){
@@ -126,15 +131,17 @@ Route::get('/' , [Home::class ,'index'])->name('home')->middleware('client');
 
 
 Route::get('/lien-he' , [Contact::class ,'index'])->name('contact');
+Route::post('/lien-he' , [Contact::class ,'store'])->name('contact.store');
 
 // product
-Route::prefix('/dich-vu')->name('client.product.')->group(function(){
-    Route::get('/' , [Service::class ,'index'])->name('product');
+Route::prefix('/dich-vu')->name('client.service.')->group(function(){
+    Route::get('/' , [Service::class ,'index'])->name('index');
+    Route::get('/tat-ca' , [Service::class ,'allService'])->name('all');
     Route::get('/{id}' , [Service::class ,'getProductByCategory'])->name('service');
-    Route::get('/filter-select' , [Service::class ,'filterSelect'])->name('filterSelect');
-    Route::get('/filter-cate' , [Service::class ,'filterCate'])->name('filterCate');
-    Route::get('/filter-room' , [Service::class ,'filterRoom'])->name('filterRoom');
-    Route::get('/filter-search' , [Service::class ,'filterSearch'])->name('filterSearch');
+    Route::get('/filter-select/filter' , [Service::class ,'filterSelect'])->name('filterSelect');
+    Route::get('/filter-cate/filter' , [Service::class ,'filterCate'])->name('filterCate');
+    Route::get('/filter-room/filter' , [Service::class ,'filterRoom'])->name('filterRoom');
+    Route::get('/filter-search/filter' , [Service::class ,'filterSearch'])->name('filterSearch');
 });
 
 // categori
