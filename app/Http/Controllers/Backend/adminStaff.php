@@ -8,10 +8,17 @@ use App\Models\User;
 
 class adminStaff extends Controller
 {
-    public function index(){
+    public function index(Request $request){
+        $search = request('q');
         $staff = User::select( 'id', 'name' , 'email' , 'password' ,'address' , 'phone' , 'status' , 'avatar' )
                 ->where('role' , 2)
                 ->orderBy('id', 'desc')
+                ->when($search, function($query) use ($search){
+                    $query->where('name','like','%'.$search.'%')
+                    ->orWhere('email','like','%'.$search.'%')
+                    ->orWhere('phone','like','%'.$search.'%')
+                        ;
+                })
                 ->paginate(request('limit') ?? 7);
 
         return view('admin.adminStaff.adminStaff' , ['staff' => $staff]);

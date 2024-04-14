@@ -1,23 +1,28 @@
 @extends('admin.layout.main')
-@section('title' , 'Admin Order')
+@section('title' , 'Đặt hàng')
 @section('content')
 <div class="container">
     <div class="d-flex  justify-content-between align-item-center">
-        <h3 class="my-3">Admin Order </h3>
-        <button class="btn btn-info back text-white mt-2">Refest</button>
+        <h3 class="my-3">Quản lý đặt hàng</h3>
     </div>
     <h3 id="result"></h3>
+    <div class="d-flex justify-content-end align-item-center">
+        <form method="GET" class="col-5" action="{{route('order.index')}}" class="mb-3">
+            <div class="row">
+                <input type="search" id="search-name" name="q" class="form-control" placeholder="*Tìm kiếm bằng tên, điện thoại ...">
+            </div>
+        </form>
+    </div>
     <table class="table">
         <thead>
             <tr class="text-nowrap">
-                <th>Id</th>
-                <th>Name</th>
-                <th>Phone</th>
-                <th>Address</th>
-                <th>Money</th>
-                <th>Date</th>
-                <th>Status</th>
-                <th>Actions</th>
+                <th>ID</th>
+                <th>Họ tên</th>
+                <th>Điện thoại</th>
+                <th>Ngày đặt</th>
+                <th>Ngày cập nhật</th>
+                <th>Trạng thái</th>
+                <th>Hành động</th>
             </tr>
         </thead>
         <tbody class="table-border-bottom-0">
@@ -26,18 +31,17 @@
                 <td>{{$item->id}}</td>
                 <td><a href="{{route('order.detail' , $item->id)}}">{{$item->name}}</a></td>
                 <td>{{$item->phone}}</td>
-                <td>{{$item->address}}</td>
-                <td></td>
                 <td>{{$item->created_at->format('H:i d/m/Y')}}</td>
+                <td>{{$item->updated_at->format('H:i d/m/Y')}}</td>
                 <td>
                     @if ($item->status == 0)
-                    <span  class="bg-info p-1 rounded text-white">Waiting</span>
+                    <span  class="bg-info p-1 rounded text-white">Đang chờ duyệt</span>
                     @elseif ($item->status == 2)
-                    <span   class="bg-danger p-1 rounded text-white">Canceled</span>
+                    <span   class="bg-danger p-1 rounded text-white">Hủy đơn</span>
                     @elseif ($item->status == 3)
-                    <span  class="bg-success p-1 rounded text-white">Received</span>
+                    <span  class="bg-success p-1 rounded text-white">Hoàn thành đơn hàng</span>
                     @else
-                    <span  class="bg-primary  p-1 rounded text-white">Delivery</span>
+                    <span  class="bg-primary  p-1 rounded text-white">Đang xử lý</span>
                     @endif
                 </td>
                 <td>
@@ -49,7 +53,10 @@
                             <a href="{{route('order.delete' , $item->id)}}" id="showToastPlacement"
                                 onclick="return confirm('Do you want to delete this data?')"
                                 class="dropdown-item btn btn-outline-danger"><i class="bx bx-trash me-1"></i>
-                                Delete</a>
+                                Xóa</a>
+                                <a href="{{route('order.detail' , $item->id)}}" id="showToastPlacement"
+                                    class="dropdown-item btn btn-outline-warning">
+                                    Cập nhật</a>
                         </div>
                     </div>
                 </td>

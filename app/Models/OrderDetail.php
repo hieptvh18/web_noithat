@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class OrderDetail extends Model
 {
     protected $table = 'order_detail';
-    protected $fillable = ['quantity' , 'price' , 'product_id' , 'order_id' , 'image' ,  'atribute'];
+    protected $fillable = ['quantity' , 'price' , 'product_id' , 'order_id' , 'image' ,  'atribute','note'];
     use HasFactory;
 
     protected $casts =  [

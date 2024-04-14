@@ -21,7 +21,7 @@
                 <tbody>
                     <?php $index = 1;$sum  = 0?>
                     @foreach ($cart as $item)
-                    <?php  $sum+=$item['number'] * $item['price'] ?>
+                    <?php  $sum+=$item['price'] ?>
                     <tr>
                         <td>{{$index++}}</td>
                         <td class="cart_name-box">
@@ -44,7 +44,7 @@
                             </div>
                         </td> --}}
                         <td><?=number_format($item['price'], 0 , '.')?>₫</td>
-                        <td><?=number_format($item['price'] * $item['number'], 0 , '.')?>₫</td>
+                        <td><?=number_format($item['price'], 0 , '.')?>₫</td>
                         <td>
                             <a onclick="return confirm('Bạn có muốn xoá dịch vụ này ?')"
                                 href="{{route('cart.deleteCart' , $item['id'])}}" class="btn-delete-cart"><i

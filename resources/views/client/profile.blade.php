@@ -41,8 +41,6 @@
                         <th>STT</th>
                         <th>Người nhận</th>
                         <th>Ngày mua</th>
-                        <th>Số SP</th>
-                        <th>Thành tiền</th>
                         <th>Trạng thái</th>
                         <th>Chi tiết</th>
                         <th>Huỷ đơn</th>
@@ -60,12 +58,6 @@
                         </td>
                         <td>
                             {{date_format($item->created_at,"H:i d/m/Y ")}}
-                        </td>
-                        <td>
-                            {{$item->status}}
-                        </td>
-                        <td>
-                            200000d
                         </td>
                         <td>
                             @if ($item->status == 0)
@@ -174,8 +166,7 @@
                     <tr>
                         <th>STT</th>
                         <th>Sản phẩm</th>
-                        <th>Số lượng</th>
-                        <th>Giá tiền</th>
+                        <th>Yêu cầu chi tiết</th>
                         <th>Thành tiền</th>
                         @if ($orderDetail->status == 0)
                             <th>Xoa</th>
@@ -184,8 +175,11 @@
                 </thead>
 
                 <tbody>
-                    <?php $index = 1?>
+                    <?php $index = 1; $total = 0;?>
                     @foreach ($proOrderDetail as $item)
+                    @php
+                        $total += $item->price;
+                    @endphp
                     <tr>
                         <td>
                             {{$index++}}
@@ -202,13 +196,10 @@
 
                         </td>
                         <td>
-                            {{$item->quantity}}
+                            {{substr($item->note,0,1000)}}
                         </td>
                         <td>
                             <?=number_format($item->price, 0 , '.')?>₫
-                        </td>
-                        <td>
-                            <?=number_format($item->price * $item->quantity, 0 , '.')?>₫
                         </td>
                         @if ($orderDetail->status == 0)
                         <td>
@@ -222,7 +213,7 @@
 
                 </tbody>
             </table>
-            <h3 class="money-total">Tổng tiền: <span> <?=number_format($sum, 0 , '.')?>₫</span></h3>
+            <h3 class="money-total">Tổng tiền: <span> <?=number_format($total, 0 , '.')?>₫</span></h3>
         </div>
         @endif
     </div>

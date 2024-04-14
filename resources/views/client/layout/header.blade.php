@@ -82,15 +82,14 @@
                     <h4 style="margin-top: 10px;">Tổng số : <?= count(session('cart')) ?> </h4>
                     <?php $sum = 0; ?>
                     @foreach (session('cart') as $item)
-                        <?php $sum += $item['number'] * $item['price']; ?>
+                        <?php $sum += $item['price']; ?>
                         <div class="cart-list-item">
                             <div class="" style="display:flex;justify-content: start">
                                 <img class="cart-list-item-img " src="{{ asset('upload/' . $item['img']) }}"
                                     alt="">
                                 <div class="" style="margin-left:20px">
                                     <p class="cart-list-item-name">{{ $item['name'] }}</p>
-                                    <p class="cart-list-item-price">{{ $item['price'] }}₫
-                                        <span>({{ $item['number'] }})</span></p>
+                                    <p class="cart-list-item-price">{{ $item['price'] }}₫</p>
                                 </div>
                             </div>
                             <a onclick="return confirm('Bạn có muốn xoá sản phẩm này ?')"

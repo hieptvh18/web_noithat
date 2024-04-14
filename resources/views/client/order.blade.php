@@ -1,12 +1,12 @@
 @extends('client.layout.master')
-@section('title' , 'Liên hệ')
+@section('title' , 'Đặt hàng')
 @section('css')
 <link rel="stylesheet" href="{{asset('assets/client/css/Pay.css')}}">
 @endsection
 @section('content')
 <div class="content padding-container text-center">
     <h3 class="title-page-name commom-title text-center">Thanh toán</h3>
-    <p class="text-center color-text">Sau khi hoàn thành đơn hàng. Chúng tôi sẽ sớm liên hệ với bạn để tư vấn rõ hơn. Bạn có thể theo dõi đơn đặt hàng ở trang cá nhân </p>
+    <p class="text-center color-text">Quý khách vui lòng thanh toán qua qr code dưới. Sau đó chúng tôi sẽ xử lý yêu cầu và mang đến cho quý khách sản phẩm tốt nhất</p>
     <form class="cart-box" action="{{route('order.store')}}" method="POST">
         @csrf
         <div class="">
@@ -32,8 +32,7 @@
                 <span style="color: red;text-align:left">{{$errors->first('phone')}}</span>
                 @endif
             </div>
-            {{dd(session('cart'))}}
-            <textarea class="input-contact-textarea" name="note" placeholder="Nội dung" name="">{{session('cart') ? session('cart')['note'] : ''}}</textarea>
+            <textarea class="input-contact-textarea" name="note" placeholder="Nội dung" name="">{{$cart ? array_values($cart)[0]['note'] : ''}}</textarea>
         </div>
         <div class="total-money">
             <div class="order-box">
@@ -43,9 +42,9 @@
                 @if ($cart)
 
                 @foreach ($cart as $item)
-                <?php  $sum+=$item['number'] * $item['price'] ?>
+                <?php  $sum+=$item['price'] ?>
                 <div class="plus-cart-provisional">
-                    <h4>{{$item['name']}} ({{$item['number']}})</h4>
+                    <h4>{{$item['name']}}</h4>
                     <h5><?=number_format($item['price'], 0 , '.')?>₫ </h5>
                 </div>
 
@@ -55,9 +54,10 @@
                     <h3 class="total-name" style="color: #8E0007">Tổng tiền</h3>
                     <h4 class="total-price"> <?=number_format($sum, 0 , '.')?>₫</h4>
                 </div>
-                <p class="order-note">Sau khi quý khách đặt hàng. Chúng tôi sẽ gửi thông tin đơn hàng qua Email và gọi
-                    điện xác nhận đơn hàng. Sau đó sẽ tiến hành vận chuyển hàng. Quý khách thanh toán khi nhận được hàng
-                </p>
+                <div class="img-qr" style="width: 300px; margin: 0 auto;">
+                    <img src="https://eko.in/assets/img/bill-payment/QR.png" width="100%" alt="">
+                </div>
+                 <p class="order-note">Thanh toán theo cú pháp: Dichvu_sodienthoai (Thietkelogo_098132322)</p>
                 <button href="" class="btn-check-out">Đặt ngay</button>
             </div>
         </div>

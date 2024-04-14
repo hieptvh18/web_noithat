@@ -6,12 +6,17 @@
         <div class="">
             <h5 class="card-header">Quản lý khách hàng</h5>
             <!-- <button class="btn btn-primary"></button> -->
+            <div class="d-flex justify-content-end">
+                <form method="GET" class="col-5" action="{{route('staff.index')}}" class="mb-3 ">
+                    <input type="search" id="search-name" name="q" class="form-control" placeholder="*Tìm kiếm bằng tên ...">
+                </form>
+            </div>
         </div>
         <div class="table-responsive text-nowrap">
             <table class="table">
                 <thead>
                     <tr class="text-nowrap">
-                        <th>Id</th>
+                        <th>ID</th>
                         
                         <th>Avatar</th>
                         <th>Tên</th>

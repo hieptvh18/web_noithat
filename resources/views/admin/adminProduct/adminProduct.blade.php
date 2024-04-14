@@ -6,7 +6,19 @@
         <h3 class="my-3">Quản lý dịch vụ chi tiết</h3>
     </div>
     <h3 id="result"></h3>
-    <a href="{{route('product.create')}}" class="btn btn-primary">Thêm mới</a>
+    
+    <div class="d-flex justify-content-between align-item-center">
+        <div>
+            <a href="{{route('product.create')}}" class="btn btn-primary">Thêm mới</a>
+        </div>
+
+        <form method="GET" class="col-5" action="{{route('product.index')}}" class="mb-3">
+            <div class="row">
+                <input type="search" id="search-name" name="q" class="form-control" placeholder="*Tìm kiếm bằng tên ...">
+            </div>
+        </form>
+    </div>
+
     <table class="table">
         <thead>
             <tr class="text-nowrap">

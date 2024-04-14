@@ -20,16 +20,8 @@ class Profile extends Controller
         if($id){
             $orderDetail =  \App\Models\Order::find($id);
             $proOrderDetail =  \App\Models\OrderDetail::with(['order' , 'product'])->where('order_id' , $id)->get();
-            // if($pro){
-
-            // }
-            foreach( $proOrderDetail as $item){
-                $sum+=$item->price * $item->quantity;
-            }
-
         }
-
-        return view('client.profile' ,  compact('user' , 'order' , 'proOrderDetail' ,   'orderDetail' , 'sum'));
+        return view('client.profile' ,  compact('user' , 'order' , 'proOrderDetail' ,   'orderDetail'));
     }
 
     public function updateInfo(Request $request){

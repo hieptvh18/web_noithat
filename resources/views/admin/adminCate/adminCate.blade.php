@@ -40,10 +40,12 @@
         <div class="col-9">
             <div class="row">
                 <div class="col-12">
-                    <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Filter by name</label>
-                        <input type="text" id="search-name" class="form-control q" placeholder="*Enter to search ...">
-                    </div>
+                    <form method="GET" action="{{route('cate.index')}}" class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Tìm kiếm bằng tên...</label>
+                        <div class="row">
+                            <input type="search" id="search-name" name="q" class="form-control" placeholder="*Enter to search ...">
+                        </div>
+                    </form>
                     <p id="log"></p>
                 </div>
                 {{-- <div class="col-6">
@@ -138,12 +140,12 @@ $(document).ready(function() {
     var url = window.location.href;
     var urlBase = window.location.href.split('?')[0];
     // Search by name
-    $('#search-name').keypress(function() {
+    // $('#search-name').keyUp(function() {
 
-        checkOutUrl('q', $(this).val());
-        document.querySelector('.q').value = $(this).val();
-        // console.log(window.location.href);
-    })
+    //     checkOutUrl('q', $(this).val());
+    //     document.querySelector('.q').value = $(this).val();
+    //     // console.log(window.location.href);
+    // })
 
     // Search by room_id
     $('#filter-room').on('change', function() {

@@ -10,11 +10,18 @@ use App\Models\Option;
 use App\Models\OptionDetail;
 use App\Models\ProductOption;
 use App\Models\ProductOptionDetail;
+use Illuminate\Support\Facades\DB;
 
 class adminProduct extends Controller
 {
-    public function index(){
-        $product = Product::orderby('products.id' , 'desc')->paginate(request('limit') ?? 5 );
+    public function index(Request $request){
+        $search = request('q');
+        
+        $product = Product::orderby('products.id' , 'desc')
+                        ->when($search, function($query) use ($search){
+                            $query->where('name','like','%'.$search.'%');
+                        })            
+                        ->paginate(request('limit') ?? 10 );
         return view('admin.adminProduct.adminProduct' , ['products' => $product]);
     }
 
@@ -72,6 +79,36 @@ class adminProduct extends Controller
             $product->save();
             return redirect()->route('product.index')->with('success' , 'Add product success !!!');
        
+    }
+
+    public function update(Request $request, $id){
+        $request->validate([
+            'name'=>'required',
+            'price'=>'required|integer',
+            'price_sale'=>'nullable|integer',
+            'description'=>'required',
+            'intro_service'=>'required',
+        ]);
+
+        try{
+            DB::beginTransaction();
+            $product = Product::find($id);
+            if($request->hasFile('image')){
+                $file = $request->file('image');
+                $filename =  time().'_'.$file->getClientoriginalName();
+                $file->move(public_path('/upload'), $filename);
+                $product->image = $filename;
+            }
+            $product->fill($request->all());
+            $product->save();
+
+            DB::commit();
+
+            return redirect()->route('product.edit',['id'=>$id])->with('success','Cập nhật thành công');
+        }catch(\Throwable $th){
+            DB::rollBack();
+            return redirect()->route('product.edit',['id'=>$id])->with('error','Cập nhật không thành công');
+        }
     }
 
     public function  edit($id){

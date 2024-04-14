@@ -84,6 +84,7 @@ Route::middleware('auth')->prefix('quan-tri')->group(function(){
         Route::get('/edit/{id}' ,  [adminProduct::class ,'edit'])->name('edit');
         Route::get('/create' ,  [adminProduct::class ,'create'])->name('create');
         Route::post('/store',  [adminProduct::class ,'store'])->name('store');
+        Route::put('/update/{id}',  [adminProduct::class ,'update'])->name('update');
         Route::get('/propertie',  [adminProduct::class ,'propertie'])->name('propertie');
         Route::post('/distortion',  [adminProduct::class ,'distortionUpdateQuantity'])->name('distortionUpdateQuantity');
         Route::post('/distortionStore',  [adminProduct::class ,'distortionStore'])->name('distortionStore');

@@ -10,18 +10,24 @@ use Illuminate\Http\Request;
 class adminOrder extends Controller
 {
    public function index(){
-    $orders = Order::orderby('orders.id' , 'desc')->paginate(request('limit') ?? 5 );
+    $search = request('q');
+    $orders = Order::orderby('orders.id' , 'desc')
+                    ->when($search, function($query) use ($search){
+                        $query->where('name','like','%'.$search.'%')
+                                ->orWhere('phone','like','%'.$search.'%');
+                    })
+                    ->paginate(request('limit') ?? 5 );
     return view('admin.adminOrder.adminOrder' ,compact('orders'));
    } 
 
    public function detail($id){
-    $orderDetail = Order::find($id);
-    $products = OrderDetail::where('order_id' , $id)->get();
-    $sum = 0;
-    foreach($products as $key){
-        $sum+=$key->price * $key->quantity;
-    }
-    return view('admin.adminOrder.detail', compact('orderDetail' , 'products' , 'sum'));
+        $orderDetail = Order::find($id);
+        $products = OrderDetail::where('order_id' , $id)->get();
+        $sum = 0;
+        foreach($products as $key){
+            $sum+=$key->price * $key->quantity;
+        }
+        return view('admin.adminOrder.detail', compact('orderDetail' , 'products' , 'sum'));
    }
 
    public function updateStatus(){

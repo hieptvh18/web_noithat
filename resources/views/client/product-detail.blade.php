@@ -70,7 +70,7 @@
                     </div>
                     <div class="">
                         <p style="float: left; margin-bottom: 10px; font-weight: bold;">Yêu cầu chi tiết</p>
-                        <textarea name="note" id="note" cols="25" rows="6" style="width: 100%; padding: 5px;" placeholder="Nhập yêu cầu chi tiết của bạn"></textarea>
+                        <textarea name="note" required id="note" cols="25" rows="6" style="width: 100%; padding: 5px;" placeholder="Nhập yêu cầu chi tiết của bạn"></textarea>
                     </div>
                     <div style="text-align: center; margin-top: 10px;">
                         <button class="btn-add-to-cart">Đặt dịch vụ ngay</button>

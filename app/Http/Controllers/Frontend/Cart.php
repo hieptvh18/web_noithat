@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\DB;
 
 class Cart extends Controller
 {
@@ -100,49 +100,58 @@ class Cart extends Controller
 
     public function OrderStore(Request $request){
 
-        $rules = [
-            'name' => 'required',
-            'email' => 'required|email',
-            'address' => 'required',
-            'phone' => 'required',
-        ];
-
-        $messages =   [
-            'name.required' => 'Name bắt buộc nhập',
-            'email.required' => 'Email bắt buộc nhập',
-            'address.required' => 'Address bắt buộc nhập',
-            'phone.required' => 'Phone bắt buộc nhập',
-        ];
-
-        $this->validate($request, $rules, $messages);
-
-        try {
-            $order = new \App\Models\Order();
-            if(Auth::check()){
-                $user_id = Auth::id();
+        try{
+            $rules = [
+                'name' => 'required',
+                'email' => 'required|email',
+                'address' => 'required',
+                'phone' => 'required',
+            ];
+    
+            $messages =   [
+                'name.required' => 'Name bắt buộc nhập',
+                'email.required' => 'Email bắt buộc nhập',
+                'address.required' => 'Address bắt buộc nhập',
+                'phone.required' => 'Phone bắt buộc nhập',
+            ];
+    
+            $this->validate($request, $rules, $messages);
+            
+            DB::beginTransaction();
+            try {
+                $order = new \App\Models\Order();
+                if(Auth::check()){
+                    $user_id = Auth::id();
+                }
+                $order->user_id = $user_id;
+                $order->fill($request->all());
+                $order->save();
+            } catch (\Throwable $th) {
+                abort(500 ,'Not save Order');
+                return false;
             }
-            $order->user_id = $user_id;
-            $order->fill($request->all());
-            $order->save();
-        } catch (\Throwable $th) {
-            abort(500 ,'Not save Order');
-            return false;
-        }
-        // dd($order->id);
-
-        if (session()->exists('cart')) {
-            foreach (session('cart') as $key) {
-                \App\Models\OrderDetail::create([
-                    'product_id' =>  $key['id'],
-                    'order_id' =>  $order->id,
-                    'image' =>  $key['img'],
-                    'quantity' =>  $key['number'],
-                    'price' =>  $key['price'],
-                    'atribute'=> $key['size'],
-                ]);
+            // dd($order->id);
+    
+            if (session()->exists('cart')) {
+                foreach (session('cart') as $key) {
+                    \App\Models\OrderDetail::create([
+                        'product_id' =>  $key['id'],
+                        'order_id' =>  $order->id,
+                        'image' =>  $key['img'],
+                        'quantity' =>  1,
+                        'price' =>  (int)$key['price'],
+                        'atribute'=> $key['size'],
+                        'note'=> $key['note'],
+                    ]);
+                }
+                session()->forget('cart');
             }
-            session()->forget('cart');
+            DB::commit();
+
+            return redirect()->route('home')->with('success' , 'Đặt hàng thành công');
+        }catch(\Throwable $th){
+            DB::rollBack();
+            dd($th);
         }
-        return redirect()->route('home')->with('success' , 'Đặt hàng thành công');
     }
 }
