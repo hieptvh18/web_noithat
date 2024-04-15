@@ -18,14 +18,18 @@ class Service extends Controller
 
     public function allService()
     {
-        $services = ModelProduct::all();
+        $search = request('q');
+        $services = ModelProduct::when($search, function($query) use ($search){
+            $query->where('name','like','%'.$search.'%');
+        })->get();
         $cates = Category::all();
 
         return view('client.product' , [
             'rooms' => [],
             'cates' => $cates,
             'products' => $services,
-            'parentCategory'=>''
+            'parentCategory'=>'',
+            'searchValue'=>$search
         ]);
     }
     

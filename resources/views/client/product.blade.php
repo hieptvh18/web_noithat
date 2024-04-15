@@ -18,6 +18,8 @@
         <div class="title-box text-center">
             @if (!empty($parentCategory))
                 <h3 class="commom-title">Dịch vụ thuộc danh mục '{{$parentCategory->name}}'</h3>
+            @elseif($searchValue)
+                <h3 class="commom-title">Kết quả tìm kiếm cho '{{$searchValue}}'</h3>
             @else
                 <h3 class="commom-title">Tất cả dịch vụ của chúng tôi</h3>
             @endif

@@ -4,10 +4,10 @@
                     HÃY LIÊN HỆ VỚI CHÚNG TÔI!
                 </h3>
                 <p class="text-center color-text">Luôn sẵn sáng hỗ trợ và tư vấn cho bạn để có sản phẩm tốt nhất.</p>
-                <div class="header-footer-form-box text-center">
-                    <input placeholder="Tìm kiếm dịch vụ" class="header-footer-form-input" type="text">
+                <form action="{{route('client.service.all')}}" class="header-footer-form-box text-center">
+                    <input placeholder="Tìm kiếm dịch vụ" name="q" class="header-footer-form-input" type="text">
                     <button class="header-footer-form-btn">Gửi</button>
-                </div>
+                </form>
             </header>
             <div class="footer-intro-box padding-container">
                 <div class="footer-intro-item">

@@ -13,8 +13,8 @@
                 <img src="https://www.adina.vn/assets/images/logo.png" alt="">
             </a>
         </div>
-        <form action="" class="header-search_form-box">
-            <input class="header-search_form-input" type="text" placeholder="Tìm kiếm dịch vụ">
+        <form action="{{route('client.service.all')}}" method="GET" class="header-search_form-box">
+            <input class="header-search_form-input" name="q" type="search" placeholder="Tìm kiếm dịch vụ">
             <button class="header-search_btn-primary"><i class="fa-solid fa-magnifying-glass"></i></button>
             <div class="product-result-search">
             </div>

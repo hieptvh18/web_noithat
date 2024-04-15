@@ -63,11 +63,11 @@
                             @if ($item->status == 0)
                             <span style="color:#2C3639; font-weight: bold">Đang chờ duyệt</span>
                             @elseif ($item->status == 1)
-                            <span style="color:#FEB139; font-weight: bold">Đang giao hàng</span>
+                            <span style="color:#FEB139; font-weight: bold">Đang xử lý</span>
                             @elseif ($item->status == 2)
                             <span style="color:#EB1D36; font-weight: bold">Đã huỷ</span>
                             @else
-                            <span style="color:#377D71; font-weight: bold">Đã thanh toán</span>
+                            <span style="color:#377D71; font-weight: bold">Hoàn thành đơn hàng</span>
                             @endif
                         </td>
                         <td>
@@ -146,19 +146,19 @@
             <ul class="list-info-user">
                 <li>Name : <span>{{$orderDetail->name}}</span></li>
                 <li>Email : <span>{{$orderDetail->email}}</span></li>
-                <li>Địa chỉ : <span>{{$orderDetail->address}}</span></li>
                 <li>Số điện thoại : <span>{{$orderDetail->phone}}</span></li>
                 <li>Trạng thái :
                     @if ($orderDetail->status == 0)
                     <span style="color:#2C3639; font-weight: bold">Đang chờ duyệt</span>
                     @elseif ($orderDetail->status == 1)
-                    <span style="color:#FEB139; font-weight: bold">Đang giao hàng</span>
+                    <span style="color:#FEB139; font-weight: bold">Đang xử lý</span>
                     @elseif ($orderDetail->status == 2)
                     <span style="color:#EB1D36; font-weight: bold">Đã huỷ</span>
                     @else
-                    <span style="color:#377D71; font-weight: bold">Đã thanh toán</span>
+                    <span style="color:#377D71; font-weight: bold">Hoàn thành đơn hàng</span>
                     @endif
                 </li>
+                <li>Yêu cầu : <span>{{$orderDetail->note}}</span></li>
 
             </ul>
             <table class="table-order" border="1">
@@ -169,7 +169,7 @@
                         <th>Yêu cầu chi tiết</th>
                         <th>Thành tiền</th>
                         @if ($orderDetail->status == 0)
-                            <th>Xoa</th>
+                            <th>Hủy</th>
                         @endif
                     </tr>
                 </thead>
