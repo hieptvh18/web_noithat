@@ -9,7 +9,7 @@ class Order extends Model
 {
     protected  $table = 'orders';
     use HasFactory;
-    protected $fillable = ['name' , 'email' , 'address' , 'phone' , 'note'];
+    protected $fillable = ['name' , 'email' , 'address' , 'phone' , 'note','product_id','price','image','product_name'];
 
     public function orderDetail(){
         return $this->hasMany(\App\Models\OrderDetail::class ,  'order_id' , 'id');

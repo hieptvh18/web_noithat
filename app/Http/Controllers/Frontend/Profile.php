@@ -12,7 +12,9 @@ class Profile extends Controller
     public function index($id = ''){
         $user = Auth::user();
         $order = \App\Models\Order::with('orderDetail')
-        ->where('orders.user_id' , Auth::id())->get();
+            ->where('orders.user_id' , Auth::id())
+            ->orderBy('updated_at','desc')
+            ->get();
        
         $proOrderDetail = [];
         $orderDetail = [];

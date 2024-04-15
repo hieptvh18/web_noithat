@@ -39,8 +39,9 @@
                 <thead>
                     <tr>
                         <th>STT</th>
+                        <th>Dịch vụ</th>
                         <th>Người nhận</th>
-                        <th>Ngày mua</th>
+                        <th>Ngày đặt</th>
                         <th>Trạng thái</th>
                         <th>Chi tiết</th>
                         <th>Huỷ đơn</th>
@@ -53,6 +54,7 @@
                         <td>
                             {{$index++}}
                         </td>
+                        <td>{{$item->product_name}}</td>
                         <td>
                             {{$item->name}}
                         </td>

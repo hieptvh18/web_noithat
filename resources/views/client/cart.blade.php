@@ -19,8 +19,7 @@
                     <th>Xoá</th>
                 </thead>
                 <tbody>
-                    <?php $index = 1;$sum  = 0?>
-                    @foreach ($cart as $item)
+                    <?php $index = 1;$sum  = 0; $item = session('cart');?>
                     <?php  $sum+=$item['price'] ?>
                     <tr>
                         <td>{{$index++}}</td>
@@ -51,8 +50,6 @@
                                     class="fa-solid fa-trash-can"></i></a>
                         </td>
                     </tr>
-                    @endforeach
-
             </table>
             <div class="btn-table-footer">
                 <button class="btn-footer btn-continue-now"><a href="/"><i

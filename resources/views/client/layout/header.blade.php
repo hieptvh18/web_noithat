@@ -64,7 +64,7 @@
             <div class="header-icon-cart">
                 <p><i class="fa-solid icon fa-cart-shopping"></i></p>
                 @if (session()->exists('cart'))
-                    <span><?= count(session('cart')) ?></span>
+                    <span>1</span>
                 @else
                     <span>0</span>
                 @endif
@@ -79,24 +79,22 @@
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <div class="" style="padding: 0px 20px ;border-top:1px solid #ccc;">
                 @if (session()->exists('cart'))
-                    <h4 style="margin-top: 10px;">Tổng số : <?= count(session('cart')) ?> </h4>
-                    <?php $sum = 0; ?>
-                    @foreach (session('cart') as $item)
-                        <?php $sum += $item['price']; ?>
-                        <div class="cart-list-item">
-                            <div class="" style="display:flex;justify-content: start">
-                                <img class="cart-list-item-img " src="{{ asset('upload/' . $item['img']) }}"
-                                    alt="">
-                                <div class="" style="margin-left:20px">
-                                    <p class="cart-list-item-name">{{ $item['name'] }}</p>
-                                    <p class="cart-list-item-price">{{ $item['price'] }}₫</p>
-                                </div>
+                    <h4 style="margin-top: 10px;">Tổng số : 1 </h4>
+                    <?php $sum = 0; $item = session('cart') ?>
+                    <?php $sum += $item['price']; ?>
+                    <div class="cart-list-item">
+                        <div class="" style="display:flex;justify-content: start">
+                            <img class="cart-list-item-img " src="{{ asset('upload/' . $item['img']) }}"
+                                alt="">
+                            <div class="" style="margin-left:20px">
+                                <p class="cart-list-item-name">{{ $item['name'] }}</p>
+                                <p class="cart-list-item-price">{{ $item['price'] }}₫</p>
                             </div>
-                            <a onclick="return confirm('Bạn có muốn xoá sản phẩm này ?')"
-                                href="{{ route('cart.deleteCart', $item['id']) }}" class="btn-cart-delete"><i
-                                    class="fa-solid fa-trash-can"></i></a>
                         </div>
-                    @endforeach
+                        <a onclick="return confirm('Bạn có muốn xoá sản phẩm này ?')"
+                            href="{{ route('cart.deleteCart', $item['id']) }}" class="btn-cart-delete"><i
+                                class="fa-solid fa-trash-can"></i></a>
+                    </div>
                     <h4 style="margin-top: 10px;"> Tổng tiền : <?= number_format($sum, 0, '.') ?>₫ </h4>
                 @else
                     <span>Giỏ hàng hiện đang trống !!!</span>
@@ -104,6 +102,8 @@
 
                 <button class="cart-list-view"><a href="{{ route('cart.cart') }}"
                         style="text-decoration:none;color:blue">Xem dịch vụ đã đặt </a></button>
+                <button class="cart-list-view"><a href="/order"
+                    style="text-decoration:none;color:blue">Tiến hành thanh toán -></a></button>
             </div>
         </div>
     </div>
