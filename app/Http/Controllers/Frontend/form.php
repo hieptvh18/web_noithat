@@ -76,8 +76,9 @@ class form extends Controller
 
     public function login(StoreLogin $request){
         $validated = $request->validated();
+        
         if (Auth::attempt(['email' => $request->email_username, 'password' => $request->password])) {
-            return redirect()->route('home');
+            return redirect()->route('home')->with('success','Đăng nhập thành công!');
         }
         return redirect()->route('login.login');
     }

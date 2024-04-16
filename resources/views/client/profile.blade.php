@@ -145,77 +145,92 @@
                 <p>Chi tiết từng đơn hàng của bạn</p>
             </div>
             <h3>Thông tin :</h3>
-            <ul class="list-info-user">
-                <li>Name : <span>{{$orderDetail->name}}</span></li>
-                <li>Email : <span>{{$orderDetail->email}}</span></li>
-                <li>Số điện thoại : <span>{{$orderDetail->phone}}</span></li>
-                <li>Trạng thái :
-                    @if ($orderDetail->status == 0)
-                    <span style="color:#2C3639; font-weight: bold">Đang chờ duyệt</span>
-                    @elseif ($orderDetail->status == 1)
-                    <span style="color:#FEB139; font-weight: bold">Đang xử lý</span>
-                    @elseif ($orderDetail->status == 2)
-                    <span style="color:#EB1D36; font-weight: bold">Đã huỷ</span>
-                    @else
-                    <span style="color:#377D71; font-weight: bold">Hoàn thành đơn hàng</span>
-                    @endif
-                </li>
-                <li>Yêu cầu : <span>{{$orderDetail->note}}</span></li>
+            <div style="display: flex; justify-content: space-between;">
+                <ul class="list-info-user">
+                    <li>Name : <span>{{$orderDetail->name}}</span></li>
+                    <li>Email : <span>{{$orderDetail->email}}</span></li>
+                    <li>Số điện thoại : <span>{{$orderDetail->phone}}</span></li>
+                    <li>Trạng thái :
+                        @if ($orderDetail->status == 0)
+                        <span style="color:#2C3639; font-weight: bold">Đang chờ duyệt</span>
+                        @elseif ($orderDetail->status == 1)
+                        <span style="color:#FEB139; font-weight: bold">Đang xử lý</span>
+                        @elseif ($orderDetail->status == 2)
+                        <span style="color:#EB1D36; font-weight: bold">Đã huỷ</span>
+                        @else
+                        <span style="color:#377D71; font-weight: bold">Hoàn thành đơn hàng</span>
+                        @endif
+                    </li>
+                    <li>Yêu cầu : <span>{{$orderDetail->note}}</span></li>
+    
+                </ul>
+                <ul class="list-info-user">
+                    <li>Dịch vụ:</li>
+                    <li>{{$orderDetail->product_name}}</li>
+                    <li>
+                        <img src="{{asset('upload/'.$orderDetail->image)}}" width="150px" alt="service image">
+                    </li>
+                </ul>
+            </div>
+            <h3 class="money-total">Tổng tiền: <span> <?=number_format($orderDetail->price, 0 , '.')?>₫</span></h3>
 
-            </ul>
+            <h3 class="money-total">Thiết kế gửi về:</span></h3>
+            {{-- list desin --}}
             <table class="table-order" border="1">
                 <thead>
                     <tr>
                         <th>STT</th>
                         <th>Sản phẩm</th>
-                        <th>Yêu cầu chi tiết</th>
-                        <th>Thành tiền</th>
-                        @if ($orderDetail->status == 0)
-                            <th>Hủy</th>
-                        @endif
+                        <th>Hành động</th>
                     </tr>
                 </thead>
 
                 <tbody>
                     <?php $index = 1; $total = 0;?>
-                    @foreach ($proOrderDetail as $item)
-                    @php
-                        $total += $item->price;
-                    @endphp
+                    @foreach ($orderDetail->orderUserMedias as $item)
                     <tr>
                         <td>
                             {{$index++}}
                         </td>
                         <td>
                             <div class="td-product">
-                                <img src="{{ asset('upload/'. $item->image) }}" alt="">
-                                <div class="order-product">
-                                    <span class="name">{{$item->product->name}}</span>
-                                    <br>
-                                    {{-- <span>{{$item->atribute}}</span> --}}
-                                </div>
+                                <a href="{{ asset('upload/'. $item->files) }}">
+                                    <img src="{{ asset('upload/'. $item->files) }}" alt="">
+                                </a>
                             </div>
 
                         </td>
                         <td>
-                            {{substr($item->note,0,1000)}}
+                            <div style="text-align: center; margin-bottom: 5px">
+                                <button onclick="downloadImage('{{asset('upload/'.$item->files)}}')" style="padding: 7px;">Tải về </button>
+                            </div>
+
+                            @if($item->status == 0)
+                                <div style="    display: flex;
+                                justify-content: center;margin-bottom: 5px">
+                                    <a style="display: block;
+                                    width: 109px;
+                                    text-align: center;
+                                    padding: 7px;" onclick="return  confirm('Bạn có muốn cập nhật trạng thái chưa confirm thiết kế này?')"
+                                    class="btn-detail "
+                                    href="{{route('profile.orderUserMedia.updateStatus' , $item->id)}}?status=1">Reject thiết kế</a>
+                                </div>
+                                <div style="    display: flex;
+                                justify-content: center;margin-bottom: 5px">
+                                    <a style="display: block;
+                                    width: 130px;
+                                    text-align: center;
+                                    padding: 7px;" onclick="return  confirm('Bạn có muốn cập nhật trạng thái chưa confirm thiết kế này?')"
+                                        class="btn-detail btn-change-order"
+                                        href="{{route('profile.orderUserMedia.updateStatus' , $item->id)}}?status=2">Hoàn thành thiết kế</a>
+                                </div>
+                            @endif
                         </td>
-                        <td>
-                            <?=number_format($item->price, 0 , '.')?>₫
-                        </td>
-                        @if ($orderDetail->status == 0)
-                        <td>
-                            <a class="btn-delete-product" onclick="return confirm('Bạn có muốn xoá sản phẩm này ?')"
-                                href="{{ route('profile.deleteProOrder' , $item->id) }}"><i
-                                    class="fa-solid fa-trash-can"></i></a>
-                        </td>
-                        @endif
                     </tr>
                     @endforeach
 
                 </tbody>
             </table>
-            <h3 class="money-total">Tổng tiền: <span> <?=number_format($total, 0 , '.')?>₫</span></h3>
         </div>
         @endif
     </div>
@@ -255,5 +270,25 @@ var loadFile = function(event) {
         URL.revokeObjectURL(output.src) // free memory
     }
 };
+
+function downloadImage(file) {
+    // Image URL
+    var imageUrl = file; // Replace with your image URL
+    // Create a link element
+    var link = document.createElement('a');
+    link.href = imageUrl;
+
+    // Set the download attribute to specify filename
+    link.download = 'image.jpg'; // Change the filename as needed
+
+    // Append the link to the body
+    document.body.appendChild(link);
+
+    // Trigger the click event of the link
+    link.click();
+
+    // Remove the link from the body
+    document.body.removeChild(link);
+}
 </script>
 @endsection

@@ -7,60 +7,36 @@
     <div class="container">
         <a href="{{ route('order.index') }}" class="btn btn-primary mt-4"><-- Quay lại trang danh sách</a>
                 <div class="d-flex my-4 product-info-box" style="height:500px">
-                    <div class="col-4 product-info bg-primary text-white">
+                    <div class="col-3 product-info bg-primary text-white">
                         <h4 class="text-white">Chi tiết đơn hàng</h4>
                         <h6 class="text-white">Ngày đặt : {{ $orderDetail->created_at->format('H:i d/m/Y') }}</h6>
                         <h6 class="text-white">Ngày cập nhật : {{ $orderDetail->updated_at->format('H:i d/m/Y') }}</h6>
                         <h6 class="text-white">Khách hàng : {{ $orderDetail->name }}</h6>
                         <h6 class="text-white">Email : {{ $orderDetail->email }}</h6>
                         <h6 class="text-white">Điện thoại : {{ $orderDetail->phone }}</h6>
-                        <select class="form-select" data-id="{{ $orderDetail->id }}" aria-label="Default select example">
+                        <select @if ($orderDetail->status == 3) disabled @endif class="form-select" data-id="{{ $orderDetail->id }}" aria-label="Default select example">
                             <option @if ($orderDetail->status == 0) selected @endif value="0">Đang chờ duyệt</option>
                             <option @if ($orderDetail->status == 1) selected @endif value="1">Đang xử lý</option>
                             <option @if ($orderDetail->status == 2) selected @endif value="2">Huỷ đơn</option>
                             <option @if ($orderDetail->status == 3) selected @endif value="3">Hoàn thành đơn hàng
                             </option>
                         </select>
+                        <h6 class="text-white mt-4">Tên dịch vụ : {{ $orderDetail->product_name }}</h6>
                         <h6 class="text-white mt-4">Yêu cầu của khách : {{ $orderDetail->note }}</h6>
                         <h4 class="my-3 text-white">Tổng tiền : <?= number_format($sum, 0, '.') ?>₫</h4>
                     </div>
-                    <div class="col-8 product-info-right table-responsive text-nowrap">
-                        <table class="table">
-                            <thead>
-                                <tr class="text-nowrap">
-                                    <th>ID</th>
-                                    <th>Khách hàng</th>
-                                    <th>Ảnh</th>
-                                    <th>Giá tiền</th>
-                                    <th>Xóa</th>
-                                </tr>
-                            </thead>
-                            <tbody class="table-border-bottom-0">
-                                <?php $index = 0; ?>
-                                @foreach ($products as $item)
-                                    <tr>
-                                        <td>{{ $index++ }}</td>
-                                        <td>{{ $item->product->name }}</td>
-                                        <td><img style="height:50px" src="{{ asset('upload/' . $item->image) }}"
-                                                alt=""></td>
-                                        <td> <?= number_format($item->price, 0, '.') ?>₫</td>
-                                        <td><a onclick="return confirm('Do you want to delete this line? ')"
-                                                href="{{ route('order.deleteOrderDetail', $item->id) }}"
-                                                class="btn btn-danger"><i class='bx bxs-calendar-x'></i></a></td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                    <div class="col-9 product-info-right table-responsive text-nowrap">
 
                         {{-- gui thiet ke cho khach --}}
                         <h4 class="text-primary">Gửi thiết kế cho khách hàng</h4>
                         <ul class="send-design">
                             <li>
-                                <form action="" method="POST" enctype="multipart/form-data">
+                                <form action="{{route('order.sendDesign',['order_id'=>$orderDetail->id])}}" method="POST" enctype="multipart/form-data">
+                                    @csrf
                                     <div class="mb-3">
                                         <label for="exampleInputPassword1" class="form-label">Hình ảnh</label>
                                         <br>
-                                        <input type="file" name="image" accept="image/*" onchange="loadFile(event)">
+                                        <input type="file" required name="file" accept="image/*" onchange="loadFile(event)">
                                         <br>
                                         <div class="d-flex">
                                             @if (false)
@@ -73,12 +49,43 @@
                                                         alt="">
                                                 </div>
                                                 <div class="col-9">
-                                                    listing desin sent
+                                                    <table class="table">
+                                                        <thead>
+                                                            <tr class="text-nowrap">
+                                                                <th>STT</th>
+                                                                <th>Thiết kế</th>
+                                                                <th>Trạng thái</th>
+                                                                <th>Xóa</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody class="table-border-bottom-0">
+                                                            <?php $index = 1; ?>
+                                                            @foreach ($orderDetail->orderUserMedias as $item)
+                                                                <tr>
+                                                                    <td>{{ $index++ }}</td>
+                                                                    <td><img width="100px" src="{{ asset('upload/' . $item->files) }}"
+                                                                            alt=""></td>
+                                                                    <td>
+                                                                        @if($item->status == 0)
+                                                                            <span  class="bg-info p-1 rounded text-white">Đang chờ khách duyệt</span>
+                                                                        @elseif($item->status == 1)
+                                                                            <span class="bg-danger p-1 rounded text-white">Khách từ chối design</span>
+                                                                        @else
+                                                                            <span class="bg-success p-1 rounded text-white">Hoàn thành đơn hàng</span>
+                                                                        @endif
+                                                                    </td>
+                                                                    <td><a onclick="return confirm('Do you want to delete this line? ')"
+                                                                            href="{{ route('order.deleteOrderMedia', $item->id) }}"
+                                                                            class="btn btn-danger"><i class='bx bxs-calendar-x'></i></a></td>
+                                                                </tr>
+                                                            @endforeach
+                                                        </tbody>
+                                                    </table>
                                                 </div>
                                             @endif
                                         </div>
                                     </div>
-                                    <button type="submit" class="btn btn-primary">Gửi</button>
+                                    <button @if ($orderDetail->status == 3) disabled @endif type="submit" class="btn btn-primary">Gửi</button>
                                 </form>
                             </li>
                         </ul>

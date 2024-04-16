@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\OrderDetail;
+use App\Models\OrderUserMedia;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class adminOrder extends Controller
 {
@@ -21,7 +23,10 @@ class adminOrder extends Controller
    } 
 
    public function detail($id){
-        $orderDetail = Order::find($id);
+        $orderDetail = Order::with(['orderUserMedias'])
+                                ->where('id',$id)
+                                ->first();
+
         $products = OrderDetail::where('order_id' , $id)->get();
         $sum = 0;
         foreach($products as $key){
@@ -60,4 +65,44 @@ class adminOrder extends Controller
         }
         return redirect()->back()->with('success' , 'Delete success');
    }
+
+   // handle order media
+   public function sendDesign(Request $request, $orderId){
+        $request->validate([
+            'file'=>'required|max:4196', // 4mb
+        ]);
+
+        try{
+            DB::beginTransaction();
+
+            $model = new OrderUserMedia();
+            if($request->hasFile('file')){
+                $file = $request->file;
+                $filename =  $file->getClientoriginalName();
+                $file->move(public_path('/upload'), $filename);
+                $model->files = $filename;
+            }
+            $model->order_id = $orderId;
+            $model->status = 0;
+            $model->note = '';
+
+            $model->save();
+            DB::commit();
+
+            return redirect()->route('order.detail',['id'=>$orderId])->with('success','Gửi thành công');
+
+        }catch(\Throwable $e){
+            DB::rollBack();
+            report($e);
+            return redirect()->route('order.detail',['id'=>$orderId])->with('error','Gửi thất bại');
+        }
+   }
+
+    public function deleteOrderMedia($id){
+        $order  = OrderUserMedia::find($id);
+        if($order){
+            $order->delete();
+        }
+        return redirect()->back()->with('success' , 'Delete success');
+    }
 }

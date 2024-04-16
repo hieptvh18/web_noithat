@@ -13,12 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('order_user_medias', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('order_id');
-            // $table->unsignedBigInteger('user_id');
-            $table->string('files');
-            $table->timestamps();
+        Schema::table('order_user_medias', function (Blueprint $table) {
+            $table->tinyInteger('status')->default(0);// 0 is chua xac nhan, 1 is, complated
+            $table->text('note')->nullable();
         });
     }
 
@@ -29,6 +26,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('order_user_medias');
+        Schema::table('order_user_medias', function (Blueprint $table) {
+            //
+        });
     }
 };

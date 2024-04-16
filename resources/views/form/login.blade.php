@@ -23,9 +23,9 @@
                         @csrf
 
                         <div class="mb-3">
-                            <label for="email" class="form-label">Email hoặc tên của bạn</label>
+                            <label for="email" class="form-label">Email của bạn</label>
                             <input type="text" class="form-control" id="email" name="email_username"
-                                placeholder="Email hoặc tên của bạn" autofocus />
+                                placeholder="Email của bạn" autofocus />
                             @if ($errors->has('email_username'))
                             <span style="color: red">{{$errors->first('email_username')}}</span>
                             @endif

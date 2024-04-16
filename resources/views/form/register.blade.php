@@ -20,9 +20,9 @@
                     <div class="row">
                         <div class="col-6">
                             <div class="mb-3">
-                                <label for="name" class="form-label">Username</label>
+                                <label for="name" class="form-label">Họ tên</label>
                                 <input type="text" class="form-control" id="username" name="name"
-                                    placeholder="Enter your username" autofocus />
+                                    placeholder="Enter your fullname" autofocus />
                                 @if ($errors->has('name'))
                                 <span style="color: red">{{$errors->first('name')}}</span>
                                 @endif

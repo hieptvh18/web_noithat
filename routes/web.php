@@ -61,6 +61,10 @@ Route::middleware('auth')->prefix('quan-tri')->group(function(){
         Route::get('updateStatus' ,  [adminOrder::class ,'updateStatus'])->name('updateStatus');
         Route::get('deleteOrderDetail/{id}' ,  [adminOrder::class ,'deleteOrderDetail'])->name('deleteOrderDetail');
         Route::get('delete/{id}' ,  [adminOrder::class ,'delete'])->name('delete');
+
+        // order media
+        Route::post('order-media/add/design/{order_id}' ,  [adminOrder::class ,'sendDesign'])->name('sendDesign');
+        Route::get('order-media/delete/{id}' ,  [adminOrder::class ,'deleteOrderMedia'])->name('deleteOrderMedia');
     });
 
     Route::prefix('lien-he')->name('contact.')->group(function(){
@@ -113,6 +117,9 @@ Route::middleware('auth')->prefix('/')->group(function(){
         Route::get('/order/delete/{id}' , [Profile::class ,'deleteProOrder'])->name('deleteProOrder');
         Route::post('/update-info' , [Profile::class ,'updateInfo'])->name('updateInfo');
         Route::get('/updateStatus/{id}' , [Profile::class ,'updateStatus'])->name('updateStatus');
+
+        // send design
+        Route::get('/order-media/{id}' , [Profile::class ,'updateStatusOrderMedia'])->name('orderUserMedia.updateStatus');
     });
 });
 

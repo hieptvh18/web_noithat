@@ -16,6 +16,6 @@ class Order extends Model
     }
 
     public function orderUserMedias(){
-        return $this->belongsToMany(User::class,'order_user_medias');
+        return $this->hasMany(OrderUserMedia::class,'order_id');
     }
 }

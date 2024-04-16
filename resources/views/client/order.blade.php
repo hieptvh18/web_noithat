@@ -6,7 +6,7 @@
 @section('content')
 <div class="content padding-container text-center">
     <h3 class="title-page-name commom-title text-center">Thanh toán</h3>
-    <p class="text-center color-text" style="max-width: 600px; margin: 0 auto;">Quý khách vui lòng thanh toán qua qr code dưới. Sau đó chúng tôi sẽ xử lý yêu cầu và mang đến cho quý khách sản phẩm tốt nhất (Lưu ý nếu đơn hàng chưa được thanh toán, chúng tôi sẽ không thể xác nhận và xử lý đơn.)</p>
+    <p class="text-center color-text" style="max-width: 600px; margin: 0 auto;">Quý khách vui lòng thanh toán qua qr code dưới. Sau đó chúng tôi sẽ xử lý yêu cầu và mang đến cho quý khách sản phẩm tốt nhất (Lưu ý nếu đơn hàng chưa được thanh toán, chúng tôi sẽ không thể xác nhận và xử lý đơn.). Sau khi đặt hàng thành công, bạn có thể theo dõi trạng thái đơn qua trang profile cá nhân.</p>
     <form class="cart-box" action="{{route('order.store')}}" method="POST">
         @csrf
         <div class="">

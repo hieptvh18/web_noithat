@@ -13,28 +13,27 @@
             <img class="product-image"
                 src="{{asset('upload/' . $detail->image)}}"
                 alt="">
-            <p class="my-2 fs-5">Category: {{$detail->category->name}}</p>
-            <p class="my-2  fs-5">Quantity: {{$detail->quantity}}</p>
-            <p class="my-2  fs-5">Price: {{$detail->price}}</p>
-            <p class="my-2  fs-5">Price sale: <span class="price_sale">{{$detail->price}}</span></p>
+            <p class="my-2 fs-5">Nhóm dịch vụ: {{$detail->category->name}}</p>
+            <p class="my-2  fs-5">Giá bán: {{$detail->price}}</p>
+            <p class="my-2  fs-5">Giá sale: <span class="price_sale">{{$detail->price}}</span></p>
             <p class="my-2  fs-5">Number_view: {{$detail->quantity_view}}</p>
-            <p class="my-2  fs-5">Status: @if ($detail->status == 0)
-                <span class="unactive">Unactive</span>
+            <p class="my-2  fs-5">Trạng thái: @if ($detail->status == 0)
+                <span class="unactive">Ẩn</span>
                 @else
-                <span class="active">Active</span>
+                <span class="active">Hoạt động</span>
                 @endif
             </p>
         </div>
         <div class="col-8 product-info-right">
             <button class="btn w-100 text-start btn-light  p-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                <span class="fs-5 fw-bold"> Description </span>
+                <span class="fs-5 fw-bold"> Mô tả </span>
                 <br>
-                View now
+                Xem ngay
             </button>
             <button class="btn w-100 mt-3 text-start btn-light  p-3" data-bs-toggle="modal" data-bs-target="#service">
-                <span class="fs-5 fw-bold"> Intro service </span>
+                <span class="fs-5 fw-bold"> Mô tả ngắn </span>
                 <br>
-                View now
+                Xem ngay
             </button>
             <!-- Modal -->
             <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
@@ -42,14 +41,14 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="staticBackdropLabel">Description</h5>
+                            <h5 class="modal-title" id="staticBackdropLabel">Chi tiết</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                             <?= $detail->description?>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
                         </div>
                     </div>
                 </div>
@@ -61,14 +60,14 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="staticBackdropLabel">Description</h5>
+                            <h5 class="modal-title" id="staticBackdropLabel">Chi tiết</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                             <?= $detail->intro_service?>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
                         </div>
                     </div>
                 </div>
