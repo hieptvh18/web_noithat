@@ -1,5 +1,5 @@
 @extends('client.layout.master')
-@section('title' , 'Trang chủ')
+@section('title' , 'Cá nhân')
 @section('css')
 <link rel="stylesheet" href="{{asset('/assets/client/css/profile.css')}}">
 @endsection
@@ -40,7 +40,7 @@
                     <tr>
                         <th>STT</th>
                         <th>Dịch vụ</th>
-                        <th>Người nhận</th>
+                        <th>Ảnh dịch vụ</th>
                         <th>Ngày đặt</th>
                         <th>Trạng thái</th>
                         <th>Chi tiết</th>
@@ -56,7 +56,7 @@
                         </td>
                         <td>{{$item->product_name}}</td>
                         <td>
-                            {{$item->name}}
+                            <img src="{{asset('upload/'.$item->image)}}" width="100px" alt="">
                         </td>
                         <td>
                             {{date_format($item->created_at,"H:i d/m/Y ")}}
@@ -194,36 +194,50 @@
                         </td>
                         <td>
                             <div class="td-product">
-                                <a href="{{ asset('upload/'. $item->files) }}">
+                                <a href="{{ asset('upload/'. $item->files) }}" title="View">
                                     <img src="{{ asset('upload/'. $item->files) }}" alt="">
                                 </a>
                             </div>
 
                         </td>
-                        <td>
+                        <td style="text-align: center">
                             <div style="text-align: center; margin-bottom: 5px">
                                 <button onclick="downloadImage('{{asset('upload/'.$item->files)}}')" style="padding: 7px;">Tải về </button>
                             </div>
 
                             @if($item->status == 0)
-                                <div style="    display: flex;
+                                <div style="display: flex;
                                 justify-content: center;margin-bottom: 5px">
                                     <a style="display: block;
                                     width: 109px;
                                     text-align: center;
                                     padding: 7px;" onclick="return  confirm('Bạn có muốn cập nhật trạng thái chưa confirm thiết kế này?')"
-                                    class="btn-detail "
+                                    class="btn-detail btn-change-order"
                                     href="{{route('profile.orderUserMedia.updateStatus' , $item->id)}}?status=1">Reject thiết kế</a>
                                 </div>
-                                <div style="    display: flex;
+                                <div style="display: flex;
                                 justify-content: center;margin-bottom: 5px">
                                     <a style="display: block;
                                     width: 130px;
                                     text-align: center;
-                                    padding: 7px;" onclick="return  confirm('Bạn có muốn cập nhật trạng thái chưa confirm thiết kế này?')"
-                                        class="btn-detail btn-change-order"
-                                        href="{{route('profile.orderUserMedia.updateStatus' , $item->id)}}?status=2">Hoàn thành thiết kế</a>
+                                    padding: 7px;" onclick="return  confirm('Bạn có muốn cập nhật trạng thái chấp nhận thiết kế này và hoàn thành đơn hàng?')"
+                                        class="btn-detail "
+                                        href="{{route('profile.orderUserMedia.updateStatus' , $item->id)}}?status=2">Chấp nhận thiết kế</a>
                                 </div>
+                            @endif
+
+                            @if($item->status == 1)
+                                <span style="background: #f78383;
+                                padding: 3px 5px;
+                                color: #fff;
+                                font-size: small;
+                                border-radius: 3px;">Bạn đã từ chối</span>
+                            @elseif($item->status == 2)
+                                <span style="    background: #1dcc34;
+                                padding: 3px 5px;
+                                color: #fff;
+                                font-size: small;
+                                border-radius: 3px;">Bạn đã đồng ý</span>
                             @endif
                         </td>
                     </tr>

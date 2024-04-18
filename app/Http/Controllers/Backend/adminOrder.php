@@ -89,6 +89,11 @@ class adminOrder extends Controller
             $model->save();
             DB::commit();
 
+            // update status processing to order
+            $order = Order::find($orderId);
+            $order->status = 1;
+            $order->save();
+
             return redirect()->route('order.detail',['id'=>$orderId])->with('success','Gửi thành công');
 
         }catch(\Throwable $e){

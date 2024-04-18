@@ -15,15 +15,22 @@
                         <h6 class="text-white">Email : {{ $orderDetail->email }}</h6>
                         <h6 class="text-white">Điện thoại : {{ $orderDetail->phone }}</h6>
                         <select @if ($orderDetail->status == 3) disabled @endif class="form-select" data-id="{{ $orderDetail->id }}" aria-label="Default select example">
-                            <option @if ($orderDetail->status == 0) selected @endif value="0">Đang chờ duyệt</option>
-                            <option @if ($orderDetail->status == 1) selected @endif value="1">Đang xử lý</option>
-                            <option @if ($orderDetail->status == 2) selected @endif value="2">Huỷ đơn</option>
-                            <option @if ($orderDetail->status == 3) selected @endif value="3">Hoàn thành đơn hàng
+                            <option @if ($orderDetail->status == 0) selected @endif
+                                @if($orderDetail->orderUserMedias && $orderDetail->count() && $orderDetail->orderUserMedias->last()->status == 1) disabled @endif
+                                value="0">Đang chờ duyệt</option>
+                            <option @if ($orderDetail->status == 1) selected @endif
+                                value="1">Đang xử lý</option>
+                            <option @if ($orderDetail->status == 2) selected @endif 
+                                @if($orderDetail->orderUserMedias && $orderDetail->count() && $orderDetail->orderUserMedias->last()->status == 1) disabled @endif
+                                value="2">Huỷ đơn</option>
+                            <option @if ($orderDetail->status == 3) selected @endif 
+                                @if($orderDetail->orderUserMedias && $orderDetail->count() && $orderDetail->orderUserMedias->last()->status == 1) disabled @endif
+                                 value="3">Hoàn thành đơn hàng
                             </option>
                         </select>
                         <h6 class="text-white mt-4">Tên dịch vụ : {{ $orderDetail->product_name }}</h6>
                         <h6 class="text-white mt-4">Yêu cầu của khách : {{ $orderDetail->note }}</h6>
-                        <h4 class="my-3 text-white">Tổng tiền : <?= number_format($sum, 0, '.') ?>₫</h4>
+                        <h4 class="my-3 text-white">Tổng tiền : <?= number_format($orderDetail->price , 0, '.') ?>₫</h4>
                     </div>
                     <div class="col-9 product-info-right table-responsive text-nowrap">
 
