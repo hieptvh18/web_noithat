@@ -16,15 +16,15 @@
                         <h6 class="text-white">Điện thoại : {{ $orderDetail->phone }}</h6>
                         <select @if ($orderDetail->status == 3) disabled @endif class="form-select" data-id="{{ $orderDetail->id }}" aria-label="Default select example">
                             <option @if ($orderDetail->status == 0) selected @endif
-                                @if($orderDetail->orderUserMedias && $orderDetail->count() && $orderDetail->orderUserMedias->last()->status == 1) disabled @endif
+                                @if($orderDetail->orderUserMedias && $orderDetail->count() && $orderDetail->orderUserMedias->last() && $orderDetail->orderUserMedias->last()->status == 1) disabled @endif
                                 value="0">Đang chờ duyệt</option>
                             <option @if ($orderDetail->status == 1) selected @endif
                                 value="1">Đang xử lý</option>
                             <option @if ($orderDetail->status == 2) selected @endif 
-                                @if($orderDetail->orderUserMedias && $orderDetail->count() && $orderDetail->orderUserMedias->last()->status == 1) disabled @endif
+                                @if($orderDetail->orderUserMedias && $orderDetail->count() && $orderDetail->orderUserMedias->last() && $orderDetail->orderUserMedias->last()->status == 1) disabled @endif
                                 value="2">Huỷ đơn</option>
                             <option @if ($orderDetail->status == 3) selected @endif 
-                                @if($orderDetail->orderUserMedias && $orderDetail->count() && $orderDetail->orderUserMedias->last()->status == 1) disabled @endif
+                                @if($orderDetail->orderUserMedias && $orderDetail->count() && $orderDetail->orderUserMedias->last() && $orderDetail->orderUserMedias->last()->status == 1) disabled @endif
                                  value="3">Hoàn thành đơn hàng
                             </option>
                         </select>
