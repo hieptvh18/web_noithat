@@ -80,7 +80,7 @@ class form extends Controller
         if (Auth::attempt(['email' => $request->email_username, 'password' => $request->password])) {
             return redirect()->route('home')->with('success','Đăng nhập thành công!');
         }
-        return redirect()->route('login.login');
+        return redirect()->route('login.login')->with('message','Tài khoản hoặc mật khẩu không chính xác!');
     }
 
     public function logOut(Request $request){

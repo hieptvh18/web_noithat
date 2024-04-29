@@ -5,17 +5,32 @@
 @endsection
 @section('content')
 
-<div class="banner">
-    <img class="w-100" src="https://angito.com.vn/uploads/Giai-Phap-Thuong-Hieu/SME-Brand/SME.jpg" alt="">
+<div class="banner" style="height: 400px">
+    @if($parentCategory && $parentCategory->image)
+        <img style="height: 100%; " class="w-100" src="{{asset('upload/'.$parentCategory->image)}}" alt="">
+    @else
+        <img style="height: 100%; " class="w-100" src="https://angito.com.vn/uploads/Giai-Phap-Thuong-Hieu/SME-Brand/SME.jpg" alt="">
+    @endif
 </div>
 
-<div class="content padding-container">
+<div class="content padding-container" >
+    @if($parentCategory && $parentCategory->description)
+        <p class="description" style="margin-bottom: 30px;
+        color: #666;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 1.6;
+        text-align: center;">
+            {!! $parentCategory->description !!}
+        </p>
+    @endif
     <header class="header-content-box">
-        <div class="icon-open-filer-all" onclick="openNavFilter()">
+        <div class="icon-open-filer-all" onclick="openNavFilter()" style="visibility: hidden;">
             <i class="fa-solid fa-arrow-down-short-wide"></i>
             Filter
         </div>
         <div class="title-box text-center">
+            
             @if (!empty($parentCategory))
                 <h3 class="commom-title">Dịch vụ thuộc danh mục '{{$parentCategory->name}}'</h3>
             @elseif($searchValue)
@@ -38,7 +53,7 @@
 
         <!-- Overlay content -->
         <div class="overlay-content">
-            <button class="accordion">Loai hinh dịch vụ</button>
+            <button class="accordion">Loại hình dịch vụ</button>
             <div class="panel">
                 <ul>
                     <li><a href=""><i class="fa-solid fa-caret-right"></i> Tất cả dịch vụ</a></li>
@@ -57,7 +72,7 @@
                 </ul>
             </div>
 
-            <button class="accordion">GIÁ dịch vụ</button>
+            <button class="accordion">Giá dịch vụ</button>
             <div class="panel">
                 <ul>
                     <li><a href=""><i class="fa-solid fa-dollar-sign"></i> Dưới 500,000₫</a></li>

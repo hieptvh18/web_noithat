@@ -21,7 +21,9 @@
 
                     <form id="formAuthentication" class="mb-3" action="{{route('login.save')}}" method="POST">
                         @csrf
-
+                        @if(session('message'))
+                            <div class="alert alert-danger">{{session('message')}}</div>
+                        @endif
                         <div class="mb-3">
                             <label for="email" class="form-label">Email của bạn</label>
                             <input type="text" class="form-control" id="email" name="email_username"

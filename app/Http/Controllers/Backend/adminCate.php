@@ -51,8 +51,24 @@ class adminCate extends Controller
         $cate->image = $fileName;
         $cate->fill($request->all());
         $cate->save();
-        session()->put('success' , 'Add success');
+        session()->put('success' , 'Thêm thành công');
         return redirect()->route('cate.index');
+    }
+
+    public function update(Request $request, $id){
+        $cate = Category::find($id);
+
+        if($request->hasFile('image')){
+            $file = $request->image;
+            $fileName = $file->getClientoriginalName();
+            $file->move(public_path('/upload'), $fileName);
+            $cate->image = $fileName;
+        }
+   
+        $cate->fill($request->all());
+        $cate->save();
+        // session()->put('success' , 'Cập nhật thành công');
+        return redirect()->back()->with('success','Cập nhật thành công');
     }
 
     public function distroy($id){
@@ -60,7 +76,7 @@ class adminCate extends Controller
             $cate = Category::find($id);
             if($cate){
                 $cate->delete();
-                session()->put('success', 'Delete success !');
+                session()->put('success', 'Xóa thành công');
                 return redirect()->back();
             }
         } catch (\Throwable $th) {
@@ -70,6 +86,8 @@ class adminCate extends Controller
 
     public function edit($id){
         $cate = Category::find($id);
+
+        return view('admin.adminCate.edit', compact('cate'));
     }
 
     public function updateStatus(){

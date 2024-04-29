@@ -12,17 +12,21 @@
             <form class="mt-3" method="POST" action="{{route('cate.store')}}" enctype=multipart/form-data>
                 @csrf
                 <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Name</label>
-                    <input type="text" class="form-control" placeholder="Name" name="name">
+                    <label for="exampleInputEmail1" class="form-label">Tên</label>
+                    <input required type="text" class="form-control" placeholder="Name" name="name">
                 </div>
                 <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Image</label>
+                    <label for="exampleInputEmail1" class="form-label">Ảnh Banner</label>
                     <input type="file" name="image" accept="image/*" onchange="loadFile(event)">
                     <div class="mt-2">
                         <img style="width:200px;height:200px;" id="output"
                             src="https://static.vecteezy.com/system/resources/previews/004/968/608/original/upload-or-add-a-file-concept-illustration-flat-design-eps10-simple-and-modern-graphic-element-for-landing-page-empty-state-ui-infographic-button-icon-vector.jpg"
                             alt="">
                     </div>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Giới thiệu</label>
+                    <textarea name="description" id="" cols="30" rows="7" class="form-control"></textarea>
                 </div>
 
                 <input type="hidden" name="room_id" value="1">
@@ -34,7 +38,7 @@
                         @endforeach
                     </select>
                 </div> --}}
-                <button type="submit" class="btn btn-primary">Add cate</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
         <div class="col-9">
@@ -79,7 +83,7 @@
                         <tr>
                             <td id="id">{{$item->id}}</td>
                             <td>{{$item->name}}</td>
-                            <td><img width="50px" src="{{ asset('upload/' . $item->image) }}" alt=""></td>
+                            <td><img width="150px" src="{{ asset('upload/' . $item->image) }}" alt=""></td>
                             <td>{{$item->room->name}}</td>
                             <td>
                                 <select data-id="{{$item->id}}" class="form-select cate-status">
@@ -94,13 +98,14 @@
                                         <i class="bx bx-dots-vertical-rounded"></i>
                                     </button>
                                     <div class="dropdown-menu">
-                                        <a href="" class="dropdown-item btn btn-outline-warning"
-                                            href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i> Edit</a>
+                                        <a class="dropdown-item btn btn-outline-warning"
+                                            href="{{route('cate.edit',['id'=>$item->id])}}"><i class="bx bx-edit-alt me-1"></i> Chỉnh sửa</a>
+
                                         <a href="{{route('cate.delete' , $item->id)}}" id="showToastPlacement"
                                             onclick="return confirm('Do you want to delete this data?')"
                                             class="dropdown-item btn btn-outline-danger"><i
                                                 class="bx bx-trash me-1"></i>
-                                            Delete</a>
+                                            Xóa</a>
                                     </div>
                                 </div>
                             </td>

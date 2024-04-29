@@ -75,7 +75,9 @@ Route::middleware('auth')->prefix('quan-tri')->group(function(){
 
     Route::prefix('danh-muc-sp')->name('cate.')->group(function(){
         Route::get('/' ,  [adminCate::class ,'index'])->name('index');
+        Route::get('/{id}' ,  [adminCate::class ,'edit'])->name('edit');
         Route::post('/store' ,  [adminCate::class ,'store'])->name('store');
+        Route::put('/update/{id}' ,  [adminCate::class ,'update'])->name('update');
         Route::get('/delete/{id}' ,  [adminCate::class ,'distroy'])->name('delete');
         Route::get('/update-status' ,  [adminCate::class ,'updateStatus'])->name('updateStatus');
         Route::get('/filter' ,  [adminCate::class ,'filter'])->name('filter');

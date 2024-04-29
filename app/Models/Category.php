@@ -11,7 +11,7 @@ class Category extends Model
 {
     use HasFactory;
     protected $table = "categories";
-    protected $fillable = ['name' , 'room_id' , 'status'];
+    protected $fillable = ['name' , 'room_id' , 'status', 'description'];
 
     public  function room(){
         return $this->belongsTo(Room::class, 'room_id');
